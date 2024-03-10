@@ -419,7 +419,7 @@ class Model(nn.Module):
             source = ASSETS
             LOGGER.warning(f"WARNING ⚠️ 'source' is missing. Using 'source={source}'.")
 
-        is_cli = (sys.argv[0].endswith("yolo") or sys.argv[0].endswith("ultralytics")) and any(
+        is_cli = (sys.argv[0].endswith("yolov8nd")) and any(
             x in sys.argv for x in ("predict", "track", "mode=predict", "mode=track")
         )
 

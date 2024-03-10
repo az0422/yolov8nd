@@ -635,10 +635,15 @@ def check_amp(model):
 
     def amp_allclose(m, im):
         """All close FP32 vs AMP results."""
-        a = m(im, device=device, verbose=False)[0].boxes.data  # FP32 inference
+        from yolov8nd import YOLO
+
+        m1 = YOLO(m)
+        m2 = YOLO(m)
+        a = m1(im, device=device, verbose=False)[0].boxes.data  # FP32 inference
         with torch.cuda.amp.autocast(True):
-            b = m(im, device=device, verbose=False)[0].boxes.data  # AMP inference
-        del m
+            b = m2(im, device=device, verbose=False)[0].boxes.data  # AMP inference
+        del m1
+        del m2
         return a.shape == b.shape and torch.allclose(a, b.float(), atol=0.5)  # close to 0.5 absolute tolerance
 
     im = "https://ultralytics.com/images/bus.jpg"  # image to check
@@ -646,9 +651,7 @@ def check_amp(model):
     LOGGER.info(f"{prefix}running Automatic Mixed Precision (AMP) checks with YOLOv8n...")
     warning_msg = "Setting 'amp=True'. If you experience zero-mAP or NaN losses you can disable AMP with amp=False."
     try:
-        from yolov8nd import YOLO
-
-        assert amp_allclose(YOLO("yolov8n.pt"), im)
+        assert amp_allclose("amp-test.pt", im)
         LOGGER.info(f"{prefix}checks passed ✅")
     except ConnectionError:
         LOGGER.warning(f"{prefix}checks skipped ⚠️, offline and unable to download YOLOv8n. {warning_msg}")

@@ -703,13 +703,16 @@ def torch_safe_load(weight):
     from yolov8nd.utils.downloads import attempt_download_asset
 
     check_suffix(file=weight, suffix=".pt")
-    file = attempt_download_asset(weight)  # search online if missing locally
+    if str(weight).find("amp-test") + 1:
+        file = attempt_download_asset(weight, "az0422/yolo-assets", "amp-test")
+    else:
+        file = attempt_download_asset(weight)  # search online if missing locally
     try:
         with temporary_modules(
             {
-                "ultralytics.yolo.utils": "ultralytics.utils",
-                "ultralytics.yolo.v8": "ultralytics.models.yolo",
-                "ultralytics.yolo.data": "ultralytics.data",
+                "yolov8nd.yolo.utils": "yolov8nd.utils",
+                "yolov8nd.yolo.v8": "yolov8nd.models.yolo",
+                "yolov8nd.yolo.data": "yolov8nd.data",
             }
         ):  # for legacy 8.0 Classify and Pose models
             ckpt = torch.load(file, map_location="cpu")
