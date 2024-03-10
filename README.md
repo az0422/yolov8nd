@@ -1,2 +1,2 @@
-# yolov8nd
- YOLOv8-ND: New Detection Algorithm for Fast and Lightweight Object Detection
+# YOLOv8-ND
+Currently, we are preparing the weights. When weights are prepared, we will update.
