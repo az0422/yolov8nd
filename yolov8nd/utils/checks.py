@@ -276,17 +276,17 @@ def check_pip_update_available():
     Returns:
         (bool): True if an update is available, False otherwise.
     """
-    if ONLINE and is_pip_package():
-        with contextlib.suppress(Exception):
-            from yolov8nd import __version__
+    # if ONLINE and is_pip_package():
+    #     with contextlib.suppress(Exception):
+    #         from yolov8nd import __version__
 
-            latest = check_latest_pypi_version()
-            if check_version(__version__, f"<{latest}"):  # check if current version is < latest version
-                LOGGER.info(
-                    f"New https://pypi.org/project/ultralytics/{latest} available 😃 "
-                    f"Update with 'pip install -U ultralytics'"
-                )
-                return True
+    #         latest = check_latest_pypi_version()
+    #         if check_version(__version__, f"<{latest}"):  # check if current version is < latest version
+    #             LOGGER.info(
+    #                 f"New https://pypi.org/project/ultralytics/{latest} available 😃 "
+    #                 f"Update with 'pip install -U ultralytics'"
+    #             )
+    #             return True
     return False
 
 
