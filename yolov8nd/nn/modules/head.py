@@ -108,7 +108,7 @@ class NDetect(nn.Module):
         c1 = self.reg_max * 2
         c2 = self.reg_max * 4 + self.nc
 
-        self.cv1 = nn.ModuleList(nn.Sequential(RepConv(x, x, 3, 1), Conv(x, c1, 1, 1), Conv(c1, c2, 3, 1), nn.Conv2d(c2, c2, 1, 1)) for x in ch)
+        self.cv1 = nn.ModuleList(nn.Sequential(Conv(x, x, 3, 1), Conv(x, c1, 1, 1), Conv(c1, c2, 3, 1), nn.Conv2d(c2, c2, 1, 1)) for x in ch)
 
         self.dfl = DFL(self.reg_max) if self.reg_max > 1 else nn.Identity()
 
@@ -159,6 +159,31 @@ class NDetect(nn.Module):
     def decode_bboxes(self, bboxes, anchors):
         """Decode bounding boxes."""
         return dist2bbox(bboxes, anchors, xywh=True, dim=1)
+
+class NDetectL(NDetect):
+    """YOLOv8 Detect head for detection models."""
+    dynamic = False  # force grid reconstruction
+    export = False  # export mode
+    shape = None
+    anchors = torch.empty(0)  # init
+    strides = torch.empty(0)  # init
+
+    def __init__(self, nc=80,ch=()):
+        """Initializes the YOLOv8 detection layer with specified number of classes and channels."""
+        super().__init__()
+        self.nc = nc  # number of classes
+        self.nl = len(ch)  # number of detection layers
+        self.reg_max = 16  # DFL channels (ch[0] // 16 to scale 4/8/12/16/20 for n/s/m/l/x)
+        self.no = nc + self.reg_max * 4  # number of outputs per anchor
+        self.stride = torch.zeros(self.nl)  # strides computed during build
+
+        self.filter = []
+        c1 = self.reg_max * 2
+        c2 = self.reg_max * 4 + self.nc
+
+        self.cv1 = nn.ModuleList(nn.Sequential(Conv(x, c1, 1, 1), nn.Conv2d(c1, c2, 3, 1, padding=3//2)) for x in ch)
+
+        self.dfl = DFL(self.reg_max) if self.reg_max > 1 else nn.Identity()
 
 class Segment(Detect):
     """YOLOv8 Segment head for segmentation models."""
