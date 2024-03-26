@@ -33,4 +33,6 @@ Validation parameters: `data=coco.yaml batch=1 device=0|cpu`
 Prepare weights and compare
 
 
+## Reference
+
 Template from https://github.com/ultralytics/ultralytics (version: 8.1.25)
