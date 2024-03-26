@@ -1,12 +1,11 @@
 # YOLOv8-ND
 YOLOv8-ND: New Detection Algorithm for Fast and Lightweight Object Detection
 
-## Environmental Setup
-
-| CPU       | Xeon 4216 x2      |
-| Memory    | 192GB             |
-| GPU       | RTX A5000 x3      |
-| OS        | Ubuntu 22.04 LTS  |
+## System Environment
+* CPU: Xeon 4216 x2
+* Memory: 192GB
+* GPU: RTX A5000 x3
+* OS: Ubuntu 22.04 LTS
 
 ## Performance and Comparison
 
