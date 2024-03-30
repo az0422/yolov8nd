@@ -16,7 +16,7 @@ YOLOv8-ND: New Detection Algorithm for Fast and Lightweight Object Detection
 | YOLOv8ndm         | 640   | 48.9                  | 26.9              | 74.9      | 6.1                   |
 | YOLOv8ndl         | 640   | (training)            | 43.5              | 157.1     | 9.6                   |
 |                   |       |                       |                   |           |                       |
-| YOLOv8n           | 640   | 37.5                  | 8.7               | 8.9       | 4.4                   |
+| YOLOv8n           | 640   | 37.5                  | 3.2               | 8.9       | 4.4                   |
 | YOLOv8s           | 640   | 44.7                  | 11.2              | 28.6      | 4.5                   |
 | YOLOv8m           | 640   | 50.1                  | 25.9              | 78.9      | 6.5                   |
 | YOLOv8l           | 640   | 52.9                  | 43.7              | 165.2     | 10.1                  |
