@@ -1,7 +1,7 @@
 # YOLOv8-ND
 YOLOv8-ND: New Detection Algorithm for Fast and Lightweight Object Detection
 
-## System Environment
+## Experimental Environment
 * CPU: i5-13500 (E-Core: 2.0GHz, P-Core: 3.0GHz)
 * Memory: DDR4 64GB (3200MHz, 128bit width)
 * GPU: RTX 4070 (max 2.4GHz, 125W)
