@@ -23,7 +23,7 @@ YOLOv8-ND: New Detection Algorithm for Fast and Lightweight Object Detection
 
 Train parameters: `batch=16 epochs=500 optimizer=SGD lr0=0.01 momentum=0.937 data=coco.yaml`
 
-Validation parameters: `data=coco.yaml batch=1 device=0`
+Validation parameters: `data=coco.yaml batch=1 device=0|cpu`
 
 
 ## TODO
