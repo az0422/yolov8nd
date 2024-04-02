@@ -14,7 +14,7 @@ YOLOv8-ND: New Detection Algorithm for Fast and Lightweight Object Detection
 | YOLOv8ndn         | 640   | 36.4                  | 3.2               | 7.6       | 4.1                   | 36.9                  |
 | YOLOv8nds         | 640   | 44.0                  | 12.3              | 27.1      | 4.2                   | 88.2                  |
 | YOLOv8ndm         | 640   | 48.9                  | 26.9              | 74.9      | 6.1                   | 205.5                 |
-| YOLOv8ndl         | 640   | (training)            | 43.5              | 157.1     | 9.6                   | 390.5                 |
+| YOLOv8ndl         | 640   | 51.1                  | 43.5              | 157.1     | 9.6                   | 390.5                 |
 |                   |       |                       |                   |           |                       |                       |
 | YOLOv8n           | 640   | 37.5                  | 3.2               | 8.9       | 4.4                   | 40.9                  |
 | YOLOv8s           | 640   | 44.7                  | 11.2              | 28.6      | 4.5                   | 91.5                  |
@@ -27,9 +27,7 @@ Validation parameters: `data=coco.yaml batch=1 device=0|cpu`
 
 
 ## TODO
-* Wait for preparing YOLOv8ndl weights.
-* Release weights files.
-
+* Prepare for weights: YOLOv8nd-lite and YOLOv8nd-aux
 
 ## Reference
 
