@@ -724,6 +724,8 @@ def torch_safe_load(weight):
     check_suffix(file=weight, suffix=".pt")
     if str(weight).find("amp-test") + 1:
         file = attempt_download_asset(weight, "az0422/yolo-assets", "amp-test")
+    if str(weight).find("yolov8nd") + 1:
+        file = attempt_download_asset(weight, "az0422/yolo-assets", "v1.0-nd")
     else:
         file = attempt_download_asset(weight)  # search online if missing locally
     try:
