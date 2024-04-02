@@ -303,16 +303,17 @@ class v8DetectionLossAux:
             (self.reg_max * 4, self.nc), 1
         )
 
+        pred_scores = pred_scores.permute(0, 2, 1).contiguous()
+        pred_distri = pred_distri.permute(0, 2, 1).contiguous()
+
         pred_distri_aux, pred_scores_aux = torch.cat([xi.view(feats[0].shape[0], self.no, -1) for xi in feats[::2]], 2).split(
             (self.reg_max * 4, self.nc), 1
         )
 
-        pred_scores = pred_scores.permute(0, 2, 1).contiguous()
-        pred_distri = pred_distri.permute(0, 2, 1).contiguous()
-
         pred_scores_aux = pred_scores_aux.permute(0, 2, 1).contiguous()
         pred_distri_aux = pred_distri_aux.permute(0, 2, 1).contiguous()
 
+        
         dtype = pred_scores.dtype
         batch_size = pred_scores.shape[0]
         imgsz = torch.tensor(feats[0].shape[2:], device=self.device, dtype=dtype) * self.stride[0]  # image size (h,w)
@@ -337,7 +338,7 @@ class v8DetectionLossAux:
             mask_gt,
         )
 
-        pred_bboxes_aux = self.bbox_decode(anchor_points, pred_distri_aux)  # xyxy, (b, h*w, 4)
+        pred_bboxes_aux = self.bbox_decode(anchor_points_aux, pred_distri_aux)  # xyxy, (b, h*w, 4)
 
         _, target_bboxes_aux, target_scores_aux, fg_mask_aux, _ = self.assigner(
             pred_scores_aux.detach().sigmoid(),
@@ -349,6 +350,7 @@ class v8DetectionLossAux:
         )
 
         target_scores_sum = max(target_scores.sum(), 1)
+        target_scores_sum_aux = max(target_scores_aux.sum(), 1)
 
         # Cls loss
         # loss[1] = self.varifocal_loss(pred_scores, target_scores, target_labels) / target_scores_sum  # VFL way
@@ -366,7 +368,7 @@ class v8DetectionLossAux:
 
         if fg_mask_aux.sum():
             a, b = self.bbox_loss(
-                pred_distri_aux, pred_bboxes_aux, anchor_points_aux, target_bboxes_aux, target_scores_aux, target_scores_sum, fg_mask_aux
+                pred_distri_aux, pred_bboxes_aux, anchor_points_aux, target_bboxes_aux, target_scores_aux, target_scores_sum_aux, fg_mask_aux
             )
 
             loss[0] += a * 0.125

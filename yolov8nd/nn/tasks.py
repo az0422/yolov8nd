@@ -366,7 +366,7 @@ class DetectionModel(BaseModel):
             self.criterion = self.aux_fuse_init_criterion()
         
         return self
-                                                       
+
 
 class OBBModel(DetectionModel):
     """YOLOv8 Oriented Bounding Box (OBB) model."""
