@@ -50,12 +50,11 @@ from yolov8nd.nn.modules import (
     CBLinear,
     Silence,
     NDetect,
-    NDetectL,
-    NDetectAux
+    NDetectL
 )
 from yolov8nd.utils import DEFAULT_CFG_DICT, DEFAULT_CFG_KEYS, LOGGER, colorstr, emojis, yaml_load
 from yolov8nd.utils.checks import check_requirements, check_suffix, check_yaml
-from yolov8nd.utils.loss import v8ClassificationLoss, v8DetectionLoss, v8DetectionLossAux, v8OBBLoss, v8PoseLoss, v8SegmentationLoss
+from yolov8nd.utils.loss import v8ClassificationLoss, v8DetectionLoss, v8OBBLoss, v8PoseLoss, v8SegmentationLoss
 from yolov8nd.utils.plotting import feature_visualization
 from yolov8nd.utils.torch_utils import (
     fuse_conv_and_bn,
@@ -194,9 +193,6 @@ class BaseModel(nn.Module):
                 if isinstance(m, RepConv):
                     m.fuse_convs()
                     m.forward = m.forward_fuse  # update forward
-                if isinstance(m, NDetectAux):
-                    m.del_attr()
-                    m.forward = m.forward_fuse
             self.info(verbose=verbose)
 
         return self
@@ -237,7 +233,7 @@ class BaseModel(nn.Module):
         """
         self = super()._apply(fn)
         m = self.model[-1]  # Detect()
-        if isinstance(m, (Detect, NDetect, NDetectL, NDetectAux)):  # includes all Detect subclasses like Segment, Pose, OBB, WorldDetect
+        if isinstance(m, (Detect, NDetect)):  # includes all Detect subclasses like Segment, Pose, OBB, WorldDetect
             m.stride = fn(m.stride)
             m.anchors = fn(m.anchors)
             m.strides = fn(m.strides)
@@ -277,7 +273,6 @@ class BaseModel(nn.Module):
         raise NotImplementedError("compute_loss() needs to be implemented by task heads")
 
 
-
 class DetectionModel(BaseModel):
     """YOLOv8 detection model."""
 
@@ -297,7 +292,7 @@ class DetectionModel(BaseModel):
 
         # Build strides
         m = self.model[-1]  # Detect()
-        if isinstance(m, (Detect, NDetect, NDetectL, NDetectAux)):  # includes all Detect subclasses like Segment, Pose, OBB, WorldDetect
+        if isinstance(m, (Detect, NDetect)):  # includes all Detect subclasses like Segment, Pose, OBB, WorldDetect
             s = 256  # 2x min stride
             m.inplace = self.inplace
             forward = lambda x: self.forward(x)[0] if isinstance(m, (Segment, Pose, OBB)) else self.forward(x)
@@ -306,9 +301,6 @@ class DetectionModel(BaseModel):
             m.bias_init()  # only run once
         else:
             self.stride = torch.Tensor([32])  # default stride for i.e. RTDETR
-        
-        #if isinstance(m, NDetectAux):
-        #    self.loss = self.loss_aux
 
         # Init weights, biases
         initialize_weights(self)
@@ -354,19 +346,7 @@ class DetectionModel(BaseModel):
 
     def init_criterion(self):
         """Initialize the loss criterion for the DetectionModel."""
-        return v8DetectionLoss(self) if not isinstance(self.model[-1], NDetectAux) else v8DetectionLossAux(self)
-    
-    def aux_fuse_init_criterion(self):
         return v8DetectionLoss(self)
-    
-    def fuse(self, verbose=True):
-        super().fuse(verbose)
-
-        if isinstance(self.model[-1], NDetectAux):
-            self.criterion = self.aux_fuse_init_criterion()
-        
-        return self
-
 
 class OBBModel(DetectionModel):
     """YOLOv8 Oriented Bounding Box (OBB) model."""
@@ -919,7 +899,7 @@ def parse_model(d, ch, verbose=True):  # model_dict, input_channels(3)
             args = [ch[f]]
         elif m is Concat:
             c2 = sum(ch[x] for x in f)
-        elif m in (Detect, NDetect, NDetectL, NDetectAux, WorldDetect, Segment, Pose, OBB, ImagePoolingAttn):
+        elif m in (Detect, NDetect, NDetectL, WorldDetect, Segment, Pose, OBB, ImagePoolingAttn):
             args.append([ch[x] for x in f])
             if m is Segment:
                 args[2] = make_divisible(min(args[2], max_channels) * width, 8)
@@ -1036,7 +1016,7 @@ def guess_model_task(model):
                 return "pose"
             elif isinstance(m, OBB):
                 return "obb"
-            elif isinstance(m, (Detect, NDetect, NDetectL, NDetectAux, WorldDetect)):
+            elif isinstance(m, (Detect, NDetect, WorldDetect)):
                 return "detect"
 
     # Guess from model filename

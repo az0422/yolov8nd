@@ -245,7 +245,7 @@ class v8DetectionLoss:
         loss[2] *= self.hyp.dfl  # dfl gain
 
         return loss.sum() * batch_size, loss.detach()  # loss(box, cls, dfl)
-    
+   
 class v8DetectionLossAux:
     """Criterion class for computing training losses."""
 
