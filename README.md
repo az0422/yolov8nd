@@ -1,6 +1,16 @@
 # YOLOv8-ND
 YOLOv8-ND: New Detection Algorithm for Fast and Lightweight Object Detection
 
+## How to use (Examples)
+### Train
+`yolov8nd detect train model=yolov8ndn.pt data=coco128.yaml epochs=50`
+
+### Validation
+`yolov8nd detect val model=yolov8ndn.pt data=coco128.yaml`
+
+### Predict
+`yolov8nd detect predict model=yolov8ndn.pt source=https://ultralytics.com/images/bus.jpg`
+
 ## Experimental Environment
 * CPU: i5-13500 (E-Core: 2.0GHz, P-Core: 3.0GHz)
 * Memory: DDR4 64GB (3200MHz, 128bit width)
@@ -29,6 +39,6 @@ Validation parameters: `data=coco.yaml batch=1 device=0|cpu`
 ## TODO
 * Prepare for weights: YOLOv8nd-lite and YOLOv8nd-aux
 
-## Reference
+## Acknowlege
 
 Template from https://github.com/ultralytics/ultralytics (version: 8.1.25)
