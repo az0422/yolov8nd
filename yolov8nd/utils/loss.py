@@ -304,7 +304,11 @@ class v8DetectionLossAux(v8DetectionLoss):
             loss, batch_size = self.calc_loss(preds[::2], batch, self.stride[::2])
             loss_aux, _ = self.calc_loss(preds[1::2], batch, self.stride[1::2])
 
-            loss += loss_aux * 0.25
+            loss_aux[0] *= self.hyp.box_aux
+            loss_aux[1] *= self.hyp.cls_aux
+            loss_aux[2] *= self.hyp.dfl_aux
+
+            loss += loss_aux
 
         loss[0] *= self.hyp.box  # box gain
         loss[1] *= self.hyp.cls  # cls gain
