@@ -3,9 +3,7 @@ YOLOv8-ND: New Detection Algorithm for Fast and Lightweight Object Detection
 
 ## How to use (Examples)
 * Train: `yolov8nd detect train model=yolov8ndn.pt data=coco128.yaml epochs=50`
-
 * Validation: `yolov8nd detect val model=yolov8ndn.pt data=coco128.yaml`
-
 * Predict: `yolov8nd detect predict model=yolov8ndn.pt source=https://ultralytics.com/images/bus.jpg`
 
 ## Experimental Environment
@@ -23,6 +21,11 @@ YOLOv8-ND: New Detection Algorithm for Fast and Lightweight Object Detection
 | YOLOv8ndm         | 640   | 48.9                  | 26.9              | 74.9      | 6.1                   | 205.5                 |
 | YOLOv8ndl         | 640   | 51.1                  | 43.5              | 157.1     | 9.6                   | 390.5                 |
 |                   |       |                       |                   |           |                       |                       |
+| YOLOv8ndn-lite    | 640   | 34.9                  | 2.4               | 5.9       | 3.6                   | 30.9                  |
+| YOLOv8nds-lite    | 640   | 43.2                  | 9.2               | 21.1      | 3.7                   | 73.7                  |
+| YOLOv8ndm-lite    | 640   | 48.5                  | 22.2              | 63.7      | 5.3                   | 181.4                 |
+| YOLOv8ndl-lite    | 640   | 50.4                  | 38.2              | 139.7     | 8.6                   | 352.4                 |
+|                   |       |                       |                   |           |                       |                       |
 | YOLOv8n           | 640   | 37.5                  | 3.2               | 8.9       | 4.4                   | 40.9                  |
 | YOLOv8s           | 640   | 44.7                  | 11.2              | 28.6      | 4.5                   | 91.5                  |
 | YOLOv8m           | 640   | 50.1                  | 25.9              | 78.9      | 6.5                   | 215.1                 |
@@ -34,7 +37,7 @@ Validation parameters: `data=coco.yaml batch=1 device=0|cpu`
 
 
 ## TODO
-* Prepare for weights: YOLOv8nd-lite and YOLOv8nd-aux
+* Prepare for weights: YOLOv8nd-aux
 
 ## Acknowlege
 
