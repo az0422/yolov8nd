@@ -26,6 +26,11 @@ YOLOv8-ND: New Detection Algorithm for Fast and Lightweight Object Detection
 | YOLOv8ndm-lite    | 640   | 48.5                  | 22.2              | 63.7      | 5.3                   | 181.4                 |
 | YOLOv8ndl-lite    | 640   | 50.4                  | 38.2              | 139.7     | 8.6                   | 352.4                 |
 |                   |       |                       |                   |           |                       |                       |
+| YOLOv8ndn-aux     | 640   | 37.5                  | 3.7               | 8.7       | 4.4                   | 40.7                  |
+| YOLOv8nds-aux     | 640   | 45.2                  | 14.4              | 31.3      | 4.5                   | 99.5                  |
+| YOLOv8ndm-aux     | 640   | 49.4                  | 33.6              | 91.7      | 7.2                   | 245.1                 |
+| YOLOv8ndl-aux     | 640   | 51.0                  | 56.3              | 198.0     | 11.8                  | 485.0                 |
+|                   |       |                       |                   |           |                       |                       |
 | YOLOv8n           | 640   | 37.5                  | 3.2               | 8.9       | 4.4                   | 40.9                  |
 | YOLOv8s           | 640   | 44.7                  | 11.2              | 28.6      | 4.5                   | 91.5                  |
 | YOLOv8m           | 640   | 50.1                  | 25.9              | 78.9      | 6.5                   | 215.1                 |
@@ -36,9 +41,6 @@ Train parameters: `batch=16 epochs=500 optimizer=SGD lr0=0.01 momentum=0.937 dat
 Validation parameters: `data=coco.yaml batch=1 device=0|cpu`
 
 
-## TODO
-* Prepare for weights: YOLOv8nd-aux
-
-## Acknowlege
+## Acknowlegement
 
 Template from https://github.com/ultralytics/ultralytics (version: 8.1.25)

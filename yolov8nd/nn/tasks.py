@@ -727,6 +727,8 @@ def torch_safe_load(weight):
     elif str(weight).find("yolov8nd") + 1:
         if str(weight).find("-lite") + 1:
             file = attempt_download_asset(weight, "az0422/yolo-assets", "v1.0-nd-lite")
+        if str(weight).find("-aux") + 1:
+            file = attempt_download_asset(weight, "az0422/yolo-assets", "v1.0-nd-aux")
         else:
             file = attempt_download_asset(weight, "az0422/yolo-assets", "v1.0-nd")
     else:
