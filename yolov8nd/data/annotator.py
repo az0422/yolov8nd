@@ -19,7 +19,7 @@ def auto_annotate(data, det_model="yolov8x.pt", sam_model="sam_b.pt", device="",
 
     Example:
         ```python
-        from ultralytics.data.annotator import auto_annotate
+        from yolov8nd.data.annotator import auto_annotate
 
         auto_annotate(data='ultralytics/assets', det_model='yolov8n.pt', sam_model='mobile_sam.pt')
         ```

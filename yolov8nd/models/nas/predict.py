@@ -20,7 +20,7 @@ class NASPredictor(BasePredictor):
 
     Example:
         ```python
-        from ultralytics import NAS
+        from yolov8nd import NAS
 
         model = NAS('yolo_nas_s')
         predictor = model.predictor

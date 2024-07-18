@@ -10,7 +10,7 @@ where small changes in hyperparameters can lead to significant differences in mo
 Example:
     Tune hyperparameters for YOLOv8n on COCO8 at imgsz=640 and epochs=30 for 300 tuning iterations.
     ```python
-    from ultralytics import YOLO
+    from yolov8nd import YOLO
 
     model = YOLO('yolov8n.pt')
     model.tune(data='coco8.yaml', epochs=10, iterations=300, optimizer='AdamW', plots=False, save=False, val=False)
@@ -52,7 +52,7 @@ class Tuner:
     Example:
         Tune hyperparameters for YOLOv8n on COCO8 at imgsz=640 and epochs=30 for 300 tuning iterations.
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         model = YOLO('yolov8n.pt')
         model.tune(data='coco8.yaml', epochs=10, iterations=300, optimizer='AdamW', plots=False, save=False, val=False)
@@ -60,7 +60,7 @@ class Tuner:
 
         Tune with custom search space.
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         model = YOLO('yolov8n.pt')
         model.tune(space={key1: val1, key2: val2})  # custom search space dictionary
@@ -95,6 +95,7 @@ class Tuner:
             "perspective": (0.0, 0.001),  # image perspective (+/- fraction), range 0-0.001
             "flipud": (0.0, 1.0),  # image flip up-down (probability)
             "fliplr": (0.0, 1.0),  # image flip left-right (probability)
+            "bgr": (0.0, 1.0),  # image channel bgr (probability)
             "mosaic": (0.0, 1.0),  # image mixup (probability)
             "mixup": (0.0, 1.0),  # image mixup (probability)
             "copy_paste": (0.0, 1.0),  # segment copy-paste (probability)
@@ -217,7 +218,7 @@ class Tuner:
                 for ckpt in weights_dir.glob("*.pt"):
                     shutil.copy2(ckpt, self.tune_dir / "weights")
             elif cleanup:
-                shutil.rmtree(ckpt_file.parent)  # remove iteration weights/ dir to reduce storage space
+                shutil.rmtree(weights_dir, ignore_errors=True)  # remove iteration weights/ dir to reduce storage space
 
             # Plot tune results
             plot_tune_results(self.tune_csv)
