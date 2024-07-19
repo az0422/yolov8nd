@@ -7,6 +7,7 @@ import torch
 from yolov8nd.models.yolo.detect import DetectionTrainer
 from yolov8nd.nn.tasks import RTDETRDetectionModel
 from yolov8nd.utils import RANK, colorstr
+
 from .val import RTDETRDataset, RTDETRValidator
 
 
@@ -22,7 +23,7 @@ class RTDETRTrainer(DetectionTrainer):
 
     Example:
         ```python
-        from ultralytics.models.rtdetr.train import RTDETRTrainer
+        from yolov8nd.models.rtdetr.train import RTDETRTrainer
 
         args = dict(model='rtdetr-l.yaml', data='coco8.yaml', imgsz=640, epochs=3)
         trainer = RTDETRTrainer(overrides=args)

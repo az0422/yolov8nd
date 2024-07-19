@@ -7,8 +7,6 @@ hybrid encoder and IoU-aware query selection for enhanced detection accuracy.
 For more information on RT-DETR, visit: https://arxiv.org/pdf/2304.08069.pdf
 """
 
-from pathlib import Path
-
 from yolov8nd.engine.model import Model
 from yolov8nd.nn.tasks import RTDETRDetectionModel
 

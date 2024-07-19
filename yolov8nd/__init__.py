@@ -8,13 +8,12 @@ import os
 os.environ["OMP_NUM_THREADS"] = "1"  # reduce CPU utilization during training
 
 from yolov8nd.data.explorer.explorer import Explorer
-from yolov8nd.models import RTDETR, SAM, YOLO, YOLOWorld
-from yolov8nd.models.fastsam import FastSAM
-from yolov8nd.models.nas import NAS
-from yolov8nd.utils import ASSETS, SETTINGS as settings
+from yolov8nd.models import NAS, RTDETR, SAM, YOLO, FastSAM, YOLOWorld
+from yolov8nd.utils import ASSETS, SETTINGS
 from yolov8nd.utils.checks import check_yolo as checks
 from yolov8nd.utils.downloads import download
 
+settings = SETTINGS
 __all__ = (
     "__version__",
     "ASSETS",

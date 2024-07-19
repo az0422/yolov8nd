@@ -158,7 +158,7 @@ def update_models(model_names=("yolov8n.pt",), source_dir=Path("."), update_name
 
     Example:
         ```python
-        from ultralytics.utils.files import update_models
+        from yolov8nd.utils.files import update_models
 
         model_names = (f"rtdetr-{size}.pt" for size in "lx")
         update_models(model_names)

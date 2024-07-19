@@ -11,6 +11,7 @@ from functools import partial
 import torch
 
 from yolov8nd.utils.downloads import attempt_download_asset
+
 from .modules.decoders import MaskDecoder
 from .modules.encoders import ImageEncoderViT, PromptEncoder
 from .modules.sam import Sam
