@@ -43,4 +43,4 @@ Validation parameters: `data=coco.yaml batch=1 device=0|cpu`
 
 ## Acknowlegement
 
-Template from https://github.com/ultralytics/ultralytics (version: 8.1.25)
+Template from https://github.com/ultralytics/ultralytics (version: 8.2.59)
