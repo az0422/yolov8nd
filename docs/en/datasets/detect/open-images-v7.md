@@ -74,7 +74,7 @@ To train a YOLOv8n model on the Open Images V7 dataset for 100 epochs with an im
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a COCO-pretrained YOLOv8n model
         model = YOLO('yolov8n.pt')

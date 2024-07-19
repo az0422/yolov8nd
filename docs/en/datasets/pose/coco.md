@@ -47,7 +47,7 @@ To train a YOLOv8n-pose model on the COCO-Pose dataset for 100 epochs with an im
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n-pose.pt')  # load a pretrained model (recommended for training)

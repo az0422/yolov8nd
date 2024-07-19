@@ -174,7 +174,7 @@ Follow this section if you are interested in setting up YOLOv8 instead. The step
 To perform inference with YOLOv8, you can use the following Python code snippet:
 
 ```python
-from ultralytics import YOLO
+from yolov8nd import YOLO
 
 model = YOLO('yolov8n.pt')
 results = model('tcp://127.0.0.1:8888', stream=True)

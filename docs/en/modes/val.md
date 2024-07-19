@@ -54,7 +54,7 @@ Validate trained YOLOv8n model accuracy on the COCO128 dataset. No argument need
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n.pt')  # load an official model
@@ -107,7 +107,7 @@ The below examples showcase YOLO model validation with custom arguments in Pytho
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
         
         # Load a model
         model = YOLO('yolov8n.pt')

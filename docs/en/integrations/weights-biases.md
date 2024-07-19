@@ -63,7 +63,7 @@ Before diving into the usage instructions for YOLOv8 model training with Weights
 
     === "Python"
        ```python
-       from ultralytics import YOLO
+       from yolov8nd import YOLO
        from wandb.integration.ultralytics import add_wandb_callback
        import wandb
 

@@ -23,8 +23,8 @@ keywords: Ultralytics, YOLOv8, Object Detection, Object Tracking, IDetection, Vi
 
         ```python
         import cv2
-        from ultralytics import YOLO
-        from ultralytics.utils.plotting import colors, Annotator
+        from yolov8nd import YOLO
+        from yolov8nd.utils.plotting import colors, Annotator
 
         model = YOLO("yolov8n.pt")
         names = model.model.names
@@ -66,8 +66,8 @@ keywords: Ultralytics, YOLOv8, Object Detection, Object Tracking, IDetection, Vi
 
         ```python
         import cv2
-        from ultralytics import YOLO
-        from ultralytics.utils.plotting import colors, Annotator
+        from yolov8nd import YOLO
+        from yolov8nd.utils.plotting import colors, Annotator
 
         model = YOLO("yolov8n.pt")
         cap = cv2.VideoCapture("path/to/video/file.mp4")
@@ -111,8 +111,8 @@ keywords: Ultralytics, YOLOv8, Object Detection, Object Tracking, IDetection, Vi
         ```python
         import cv2
         import math
-        from ultralytics import YOLO
-        from ultralytics.utils.plotting import Annotator, colors
+        from yolov8nd import YOLO
+        from yolov8nd.utils.plotting import Annotator, colors
         
         model = YOLO("yolov8s.pt")
         cap = cv2.VideoCapture("Path/to/video/file.mp4")

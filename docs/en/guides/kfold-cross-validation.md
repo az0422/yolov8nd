@@ -68,7 +68,7 @@ Without further ado, let's dive in!
     import yaml
     import numpy as np
     import pandas as pd
-    from ultralytics import YOLO
+    from yolov8nd import YOLO
     from sklearn.model_selection import KFold
     ```
 

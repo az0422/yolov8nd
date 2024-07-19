@@ -1,6 +1,11 @@
 # Ultralytics YOLO 🚀, AGPL-3.0 license
 
-__version__ = "8.0.9"
+__version__ = "8.2.60"
+
+import os
+
+# Set ENV Variables (place before imports)
+os.environ["OMP_NUM_THREADS"] = "1"  # reduce CPU utilization during training
 
 from yolov8nd.data.explorer.explorer import Explorer
 from yolov8nd.models import RTDETR, SAM, YOLO, YOLOWorld

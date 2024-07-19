@@ -121,7 +121,7 @@ YOLO detection models, such as `yolov8n.pt`, can return JSON responses from loca
     === "`ultralytics`"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load model
         model = YOLO('yolov8n.pt')
@@ -219,7 +219,7 @@ YOLO segmentation models, such as `yolov8n-seg.pt`, can return JSON responses fr
     === "`ultralytics`"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load model
         model = YOLO('yolov8n-seg.pt')
@@ -360,7 +360,7 @@ YOLO pose models, such as `yolov8n-pose.pt`, can return JSON responses from loca
     === "`ultralytics`"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load model
         model = YOLO('yolov8n-seg.pt')

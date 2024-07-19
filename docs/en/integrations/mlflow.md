@@ -39,7 +39,7 @@ Make sure that MLflow logging is enabled in Ultralytics settings. Usually, this 
     === "Python"
         Within the Python environment, call the `update` method on the `settings` object to change your settings:
         ```python
-        from ultralytics import settings
+        from yolov8nd import settings
 
         # Update a setting
         settings.update({'mlflow': True})

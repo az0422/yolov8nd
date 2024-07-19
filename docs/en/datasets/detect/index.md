@@ -53,7 +53,7 @@ Here's how you can use these formats to train your model:
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n.pt')  # load a pretrained model (recommended for training)
@@ -98,7 +98,7 @@ You can easily convert labels from the popular COCO dataset format to the YOLO f
     === "Python"
 
         ```python
-        from ultralytics.data.converter import convert_coco
+        from yolov8nd.data.converter import convert_coco
 
         convert_coco(labels_dir='path/to/coco/annotations/')
         ```

@@ -53,7 +53,7 @@ Train YOLOv8n-seg on the COCO128-seg dataset for 100 epochs at image size 640. F
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n-seg.yaml')  # build a new model from YAML
@@ -90,7 +90,7 @@ retains it's training `data` and arguments as model attributes.
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n-seg.pt')  # load an official model
@@ -123,7 +123,7 @@ Use a trained YOLOv8n-seg model to run predictions on images.
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n-seg.pt')  # load an official model
@@ -150,7 +150,7 @@ Export a YOLOv8n-seg model to a different format like ONNX, CoreML, etc.
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n-seg.pt')  # load an official model

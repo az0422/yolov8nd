@@ -532,12 +532,13 @@ class Exporter:
                 _, assets = get_github_assets(repo="pnnx/pnnx", retry=True)
                 url = [x for x in assets if f"{system}.zip" in x][0]
             except Exception as e:
-                url = f"https://github.com/pnnx/pnnx/releases/download/20240226/pnnx-20240226-{system}.zip"
-                LOGGER.warning(f"{prefix} WARNING ⚠️ PNNX GitHub assets not found: {e}, using default {url}")
-            asset = attempt_download_asset(url, repo="pnnx/pnnx", release="latest")
-            if check_is_path_safe(Path.cwd(), asset):  # avoid path traversal security vulnerability
-                unzip_dir = Path(asset).with_suffix("")
-                (unzip_dir / name).rename(pnnx)  # move binary to ROOT
+                release = "20240410"
+                asset = f"pnnx-{release}-{system}.zip"
+                LOGGER.warning(f"{prefix} WARNING ⚠️ PNNX GitHub assets not found: {e}, using default {asset}")
+            unzip_dir = safe_download(f"https://github.com/pnnx/pnnx/releases/download/{release}/{asset}", delete=True)
+            if check_is_path_safe(Path.cwd(), unzip_dir):  # avoid path traversal security vulnerability
+                shutil.move(src=unzip_dir / name, dst=pnnx)  # move binary to ROOT
+                pnnx.chmod(0o777)  # set read, write, and execute permissions for everyone
                 shutil.rmtree(unzip_dir)  # delete unzip dir
                 Path(asset).unlink()  # delete zip
                 pnnx.chmod(0o777)  # set read, write, and execute permissions for everyone

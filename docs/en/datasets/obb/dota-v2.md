@@ -75,7 +75,7 @@ To train DOTA dataset, we split original DOTA images with high-resolution into i
     === "Python"
 
         ```python
-        from ultralytics.data.split_dota import split_trainval, split_test
+        from yolov8nd.data.split_dota import split_trainval, split_test
 
         # split train and val set, with labels.
         split_trainval(
@@ -106,7 +106,7 @@ To train a model on the DOTA v1 dataset, you can utilize the following code snip
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Create a new YOLOv8n-OBB model from scratch
         model = YOLO('yolov8n-obb.yaml')

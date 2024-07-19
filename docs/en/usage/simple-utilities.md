@@ -23,7 +23,7 @@ The `ultralytics` package comes with a myriad of utilities that can support, enh
 Dataset annotation is a very resource intensive and time-consuming process. If you have a YOLO object detection model trained on a reasonable amount of data, you can use it and [SAM](../models/sam.md) to auto-annotate additional data (segmentation format).
 
 ```{ .py .annotate }
-from ultralytics.data.annotator import auto_annotate
+from yolov8nd.data.annotator import auto_annotate
 
 auto_annotate(#(1)!
     data='path/to/new/data',
@@ -45,7 +45,7 @@ auto_annotate(#(1)!
 Use to convert COCO JSON annotations into proper YOLO format. For object detection (bounding box) datasets, `use_segments` and `use_keypoints` should both be `False`
 
 ```{ .py .annotate }
-from ultralytics.data.converter import convert_coco
+from yolov8nd.data.converter import convert_coco
 
 convert_coco(#(1)!
     '../datasets/coco/annotations/',
@@ -78,7 +78,7 @@ data
 ```
 
 ```{ .py .annotate }
-from ultralytics.data.converter import yolo_bbox2segment
+from yolov8nd.data.converter import yolo_bbox2segment
 
 yolo_bbox2segment(#(1)!
     im_dir="path/to/images",
@@ -96,7 +96,7 @@ yolo_bbox2segment(#(1)!
 If you have a dataset that uses the [segmentation dataset format](../datasets/segment/index.md) you can easily convert these into up-right (or horizontal) bounding boxes (`x y w h` format) with this function.
 
 ```python
-from ultralytics.utils.ops import segments2boxes
+from yolov8nd.utils.ops import segments2boxes
 
 segments = np.array(
     [[805, 392, 797, 400, ..., 808, 714, 808, 392],
@@ -122,7 +122,7 @@ Compresses a single image file to reduced size while preserving its aspect ratio
 
 ```{ .py .annotate }
 from pathlib import Path
-from ultralytics.data.utils import compress_one_image
+from yolov8nd.data.utils import compress_one_image
 
 for f in Path('path/to/dataset').rglob('*.jpg'):
     compress_one_image(f)#(1)!
@@ -135,7 +135,7 @@ for f in Path('path/to/dataset').rglob('*.jpg'):
 Automatically split a dataset into `train`/`val`/`test` splits and save the resulting splits into `autosplit_*.txt` files. This function will use random sampling, which is not included when using [`fraction` argument for training](../modes/train.md#arguments).
 
 ```{ .py .annotate }
-from ultralytics.data.utils import autosplit
+from yolov8nd.data.utils import autosplit
 
 autosplit( #(1)!
     path="path/to/images",
@@ -158,7 +158,7 @@ Convert a single polygon (as list) to a binary mask of the specified image size.
 
 ```python
 import numpy as np
-from ultralytics.data.utils import polygon2mask
+from yolov8nd.data.utils import polygon2mask
 
 imgsz = (1080, 810)
 polygon = np.array(
@@ -180,7 +180,7 @@ mask = polygon2mask(
 To manage bounding box data, the `Bboxes` class will help to convert between box coordinate formatting, scale box dimensions, calculate areas, include offsets, and more!
 
 ```python
-from ultralytics.utils.instance import Bboxes
+from yolov8nd.utils.instance import Bboxes
 
 boxes = Bboxes(
     bboxes=np.array(
@@ -220,7 +220,7 @@ When scaling and image up or down, corresponding bounding box coordinates can be
 ```{ .py .annotate }
 import cv2 as cv
 import numpy as np
-from ultralytics.utils.ops import scale_boxes
+from yolov8nd.utils.ops import scale_boxes
 
 image = cv.imread("ultralytics/assets/bus.jpg")
 *(h, w), c = image.shape
@@ -266,7 +266,7 @@ Convert bounding box coordinates from (x1, y1, x2, y2) format to (x, y, width, h
 
 ```python
 import numpy as np
-from ultralytics.utils.ops import xyxy2xywh
+from yolov8nd.utils.ops import xyxy2xywh
 
 xyxy_boxes = np.array(
     [[  22.878,  231.27,  804.98,  756.83,],
@@ -292,13 +292,13 @@ xywh
 ### All Bounding Box Conversions
 
 ```python
-from ultralytics.utils.ops import xywh2xyxy
-from ultralytics.utils.ops import xywhn2xyxy # normalized → pixel
-from ultralytics.utils.ops import xyxy2xywhn # pixel → normalized
-from ultralytics.utils.ops import xywh2ltwh  # xywh → top-left corner, w, h
-from ultralytics.utils.ops import xyxy2ltwh  # xyxy → top-left corner, w, h
-from ultralytics.utils.ops import ltwh2xywh
-from ultralytics.utils.ops import ltwh2xyxy
+from yolov8nd.utils.ops import xywh2xyxy
+from yolov8nd.utils.ops import xywhn2xyxy # normalized → pixel
+from yolov8nd.utils.ops import xyxy2xywhn # pixel → normalized
+from yolov8nd.utils.ops import xywh2ltwh  # xywh → top-left corner, w, h
+from yolov8nd.utils.ops import xyxy2ltwh  # xyxy → top-left corner, w, h
+from yolov8nd.utils.ops import ltwh2xywh
+from yolov8nd.utils.ops import ltwh2xyxy
 ```
 
 See docstring for each function or visit the `ultralytics.utils.ops` [reference page](../reference/utils/ops.md) to read more about each function.
@@ -314,7 +314,7 @@ Ultralytics includes an Annotator class that can be used to annotate any kind of
 ```{ .py .annotate }
 import cv2 as cv
 import numpy as np
-from ultralytics.utils.plotting import Annotator, colors
+from yolov8nd.utils.plotting import Annotator, colors
 
 names { #(1)!
      0: "person",
@@ -354,7 +354,7 @@ image_with_bboxes = ann.result()
 ```python
 import cv2 as cv
 import numpy as np
-from ultralytics.utils.plotting import Annotator, colors
+from yolov8nd.utils.plotting import Annotator, colors
 
 obb_names = {10: "small vehicle"}
 obb_image = cv.imread("datasets/dota8/images/train/P1142__1024__0___824.jpg")
@@ -394,7 +394,7 @@ See the [`Annotator` Reference Page](../reference/utils/plotting.md#ultralytics.
 Check duration for code to run/process either using `with` or as a decorator.
 
 ```python
-from ultralytics.utils.ops import Profile
+from yolov8nd.utils.ops import Profile
 
 with Profile(device=device) as dt:
     pass  # operation to measure
@@ -408,8 +408,8 @@ print(dt)
 Want or need to use the formats of [images or videos types supported](../modes/predict.md#image-and-video-formats) by Ultralytics programmatically? Use these constants if you need.
 
 ```python
-from ultralytics.data.utils import IMG_FORMATS
-from ultralytics.data.utils import VID_FORMATS
+from yolov8nd.data.utils import IMG_FORMATS
+from yolov8nd.data.utils import VID_FORMATS
 
 print(IMG_FORMATS)
 >>> ('bmp', 'dng', 'jpeg', 'jpg', 'mpo', 'png', 'tif', 'tiff', 'webp', 'pfm')
@@ -420,7 +420,7 @@ print(IMG_FORMATS)
 Calculates the nearest whole number to `x` to make evenly divisible when divided by `y`.
 
 ```python
-from ultralytics.utils.ops import make_divisible
+from yolov8nd.utils.ops import make_divisible
 
 make_divisible(7, 3)
 >>> 9

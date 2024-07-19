@@ -31,7 +31,7 @@ To train a CNN model on the ImageWoof dataset for 100 epochs with an image size 
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n-cls.pt')  # load a pretrained model (recommended for training)
@@ -60,7 +60,7 @@ ImageWoof dataset comes in three different sizes to accommodate various research
 To use these variants in your training, simply replace 'imagewoof' in the dataset argument with 'imagewoof320' or 'imagewoof160'. For example:
 
 ```python
-from ultralytics import YOLO
+from yolov8nd import YOLO
 
 # Load a model
 model = YOLO('yolov8n-cls.pt')  # load a pretrained model (recommended for training)

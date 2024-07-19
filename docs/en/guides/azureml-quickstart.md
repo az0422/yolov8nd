@@ -125,7 +125,7 @@ yolo predict model=yolov8n.pt source='https://ultralytics.com/images/bus.jpg'
 Or with the [Ultralytics Python interface](../quickstart.md#use-ultralytics-with-python), for example to train the model:
 
 ```python
-from ultralytics import YOLO
+from yolov8nd import YOLO
 
 # Load a model
 model = YOLO("yolov8n.pt")  # load an official YOLOv8n model

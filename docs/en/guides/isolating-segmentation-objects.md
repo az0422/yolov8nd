@@ -21,7 +21,7 @@ After performing the [Segment Task](../tasks/segment.md), it's sometimes desirab
 
     import cv2
     import numpy as np
-    from ultralytics import YOLO
+    from yolov8nd import YOLO
     ```
 
     ???+ tip "Ultralytics Install"
@@ -33,7 +33,7 @@ After performing the [Segment Task](../tasks/segment.md), it's sometimes desirab
 2. Load a model and run `predict()` method on a source.
 
     ```python
-    from ultralytics import YOLO
+    from yolov8nd import YOLO
 
     # Load a model
     model = YOLO('yolov8n-seg.pt')
@@ -280,7 +280,7 @@ from pathlib import Path
 
 import cv2
 import numpy as np
-from ultralytics import YOLO
+from yolov8nd import YOLO
 
 m = YOLO('yolov8n-seg.pt')#(4)!
 res = m.predict()#(3)!

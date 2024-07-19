@@ -52,7 +52,7 @@ In this example we validate YOLO-NAS-s on the COCO8 dataset.
         PyTorch pretrained `*.pt` models files can be passed to the `NAS()` class to create a model instance in python:
 
         ```python
-        from ultralytics import NAS
+        from yolov8nd import NAS
 
         # Load a COCO-pretrained YOLO-NAS-s model
         model = NAS('yolo_nas_s.pt')

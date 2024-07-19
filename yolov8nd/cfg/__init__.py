@@ -180,7 +180,27 @@ def cfg2dict(cfg):
         cfg (str | Path | dict | SimpleNamespace): Configuration object to be converted to a dictionary.
 
     Returns:
-        cfg (dict): Configuration object in dictionary format.
+        (dict): Configuration object in dictionary format.
+
+    Example:
+        ```python
+        from yolov8nd.cfg import cfg2dict
+        from types import SimpleNamespace
+
+        # Example usage with a file path
+        config_dict = cfg2dict('config.yaml')
+
+        # Example usage with a SimpleNamespace
+        config_sn = SimpleNamespace(param1='value1', param2='value2')
+        config_dict = cfg2dict(config_sn)
+
+        # Example usage with a dictionary (returns the same dictionary)
+        config_dict = cfg2dict({'param1': 'value1', 'param2': 'value2'})
+        ```
+
+    Notes:
+        - If `cfg` is a path or a string, it will be loaded as YAML and converted to a dictionary.
+        - If `cfg` is a SimpleNamespace object, it will be converted to a dictionary using `vars()`.
     """
     if isinstance(cfg, (str, Path)):
         cfg = yaml_load(cfg)  # load dict
@@ -198,7 +218,25 @@ def get_cfg(cfg: Union[str, Path, Dict, SimpleNamespace] = DEFAULT_CFG_DICT, ove
         overrides (str | Dict | optional): Overrides in the form of a file name or a dictionary. Default is None.
 
     Returns:
-        (SimpleNamespace): Training arguments namespace.
+        (SimpleNamespace): Namespace containing the merged training arguments.
+
+    Notes:
+        - If both `cfg` and `overrides` are provided, the values in `overrides` will take precedence.
+        - Special handling ensures alignment and correctness of the configuration, such as converting numeric `project`
+          and `name` to strings and validating the configuration keys and values.
+
+    Example:
+        ```python
+        from yolov8nd.cfg import get_cfg
+        
+        # Load from a custom file with overrides
+        config = get_cfg('path/to/config.yaml', overrides={'epochs': 50, 'batch_size': 16})
+        ```
+
+        Configuration dictionary merged with overrides:
+        ```python
+        {'epochs': 50, 'batch_size': 16, ...}
+        ```
     """
     cfg = cfg2dict(cfg)
 

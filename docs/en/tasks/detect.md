@@ -53,7 +53,7 @@ Train YOLOv8n on the COCO128 dataset for 100 epochs at image size 640. For a ful
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n.yaml')  # build a new model from YAML
@@ -89,7 +89,7 @@ Validate trained YOLOv8n model accuracy on the COCO128 dataset. No argument need
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n.pt')  # load an official model
@@ -118,7 +118,7 @@ Use a trained YOLOv8n model to run predictions on images.
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n.pt')  # load an official model
@@ -145,7 +145,7 @@ Export a YOLOv8n model to a different format like ONNX, CoreML, etc.
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n.pt')  # load an official model

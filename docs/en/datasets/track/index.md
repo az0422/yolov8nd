@@ -17,7 +17,7 @@ Multi-Object Detector doesn't need standalone training and directly supports pre
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         model = YOLO('yolov8n.pt')
         results = model.track(source="https://youtu.be/LNwODJXcvt4", conf=0.3, iou=0.5, show=True)

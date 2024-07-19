@@ -54,7 +54,7 @@ Train a YOLOv8-pose model on the COCO128-pose dataset.
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n-pose.yaml')  # build a new model from YAML
@@ -92,7 +92,7 @@ retains it's training `data` and arguments as model attributes.
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n-pose.pt')  # load an official model
@@ -121,7 +121,7 @@ Use a trained YOLOv8n-pose model to run predictions on images.
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n-pose.pt')  # load an official model
@@ -148,7 +148,7 @@ Export a YOLOv8n Pose model to a different format like ONNX, CoreML, etc.
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n-pose.pt')  # load an official model

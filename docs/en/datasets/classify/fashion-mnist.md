@@ -50,7 +50,7 @@ To train a CNN model on the Fashion-MNIST dataset for 100 epochs with an image s
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n-cls.pt')  # load a pretrained model (recommended for training)

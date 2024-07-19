@@ -56,7 +56,7 @@ Train YOLOv8n on the COCO128 dataset for 100 epochs at image size 640. The train
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n.yaml')  # build a new model from YAML
@@ -91,7 +91,7 @@ Multi-GPU training allows for more efficient utilization of available hardware r
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n.pt')  # load a pretrained model (recommended for training)
@@ -118,7 +118,7 @@ To enable training on Apple M1 and M2 chips, you should specify 'mps' as your de
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n.pt')  # load a pretrained model (recommended for training)
@@ -151,7 +151,7 @@ Below is an example of how to resume an interrupted training using Python and vi
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('path/to/last.pt')  # load a partially trained model

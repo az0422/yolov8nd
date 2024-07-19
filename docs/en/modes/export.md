@@ -53,7 +53,7 @@ Export a YOLOv8n model to a different format like ONNX or TensorRT. See Argument
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n.pt')  # load an official model

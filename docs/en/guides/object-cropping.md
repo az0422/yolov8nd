@@ -28,8 +28,8 @@ Object cropping with [Ultralytics YOLOv8](https://github.com/ultralytics/ultraly
     === "Object Cropping"
 
         ```python
-        from ultralytics import YOLO
-        from ultralytics.utils.plotting import Annotator, colors
+        from yolov8nd import YOLO
+        from yolov8nd.utils.plotting import Annotator, colors
         import cv2
         import os
 

@@ -31,7 +31,7 @@ To train a YOLOv8n-obb model on the DOTA8 dataset for 100 epochs with an image s
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n-obb.pt')  # load a pretrained model (recommended for training)

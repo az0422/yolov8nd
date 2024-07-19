@@ -52,8 +52,8 @@ To perform object detection on an image, use the `predict` method as shown below
     === "Python"
 
         ```python
-        from ultralytics import FastSAM
-        from ultralytics.models.fastsam import FastSAMPrompt
+        from yolov8nd import FastSAM
+        from yolov8nd.models.fastsam import FastSAMPrompt
 
         # Define an inference source
         source = 'path/to/bus.jpg'
@@ -101,7 +101,7 @@ Validation of the model on a dataset can be done as follows:
     === "Python"
 
         ```python
-        from ultralytics import FastSAM
+        from yolov8nd import FastSAM
 
         # Create a FastSAM model
         model = FastSAM('FastSAM-s.pt')  # or FastSAM-x.pt

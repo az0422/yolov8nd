@@ -48,14 +48,14 @@ The VSCode compatible protocols for viewing images using the integrated terminal
 
     import cv2 as cv
 
-    from ultralytics import YOLO
+    from yolov8nd import YOLO
     from sixel import SixelWriter
     ```
 
 1. Load a model and execute inference, then plot the results and store in a variable. See more about inference arguments and working with results on the [predict mode](../modes/predict.md) page.
 
     ```{ .py .annotate }
-    from ultralytics import YOLO
+    from yolov8nd import YOLO
 
     # Load a model
     model = YOLO("yolov8n.pt")
@@ -112,7 +112,7 @@ import io
 
 import cv2 as cv
 
-from ultralytics import YOLO
+from yolov8nd import YOLO
 from sixel import SixelWriter
 
 # Load a model

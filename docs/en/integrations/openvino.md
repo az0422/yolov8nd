@@ -32,7 +32,7 @@ Export a YOLOv8n model to OpenVINO format and run inference with the exported mo
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a YOLOv8n PyTorch model
         model = YOLO('yolov8n.pt')
@@ -256,7 +256,7 @@ To reproduce the Ultralytics benchmarks above on all export [formats](../modes/e
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a YOLOv8n PyTorch model
         model = YOLO('yolov8n.pt')

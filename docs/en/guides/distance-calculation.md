@@ -42,8 +42,8 @@ Measuring the gap between two objects is known as distance calculation within a 
     === "Video Stream"
 
         ```python
-        from ultralytics import YOLO
-        from ultralytics.solutions import distance_calculation
+        from yolov8nd import YOLO
+        from yolov8nd.solutions import distance_calculation
         import cv2
 
         model = YOLO("yolov8n.pt")

@@ -39,8 +39,8 @@ Object counting with [Ultralytics YOLOv8](https://github.com/ultralytics/ultraly
     === "Region"
 
         ```python
-        from ultralytics import YOLO
-        from ultralytics.solutions import object_counter
+        from yolov8nd import YOLO
+        from yolov8nd.solutions import object_counter
         import cv2
 
         model = YOLO("yolov8n.pt")
@@ -82,8 +82,8 @@ Object counting with [Ultralytics YOLOv8](https://github.com/ultralytics/ultraly
     === "Line"
 
         ```python
-        from ultralytics import YOLO
-        from ultralytics.solutions import object_counter
+        from yolov8nd import YOLO
+        from yolov8nd.solutions import object_counter
         import cv2
 
         model = YOLO("yolov8n.pt")
@@ -125,8 +125,8 @@ Object counting with [Ultralytics YOLOv8](https://github.com/ultralytics/ultraly
     === "Specific Classes"
 
         ```python
-        from ultralytics import YOLO
-        from ultralytics.solutions import object_counter
+        from yolov8nd import YOLO
+        from yolov8nd.solutions import object_counter
         import cv2
 
         model = YOLO("yolov8n.pt")

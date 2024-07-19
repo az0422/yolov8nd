@@ -47,7 +47,7 @@ The Segment Anything Model can be employed for a multitude of downstream tasks t
     === "Python"
 
         ```python
-        from ultralytics import SAM
+        from yolov8nd import SAM
 
         # Load a model
         model = SAM('sam_b.pt')
@@ -69,7 +69,7 @@ The Segment Anything Model can be employed for a multitude of downstream tasks t
     === "Python"
 
         ```python
-        from ultralytics import SAM
+        from yolov8nd import SAM
 
         # Load a model
         model = SAM('sam_b.pt')
@@ -97,7 +97,7 @@ The Segment Anything Model can be employed for a multitude of downstream tasks t
     === "Prompt inference"
 
         ```python
-        from ultralytics.models.sam import Predictor as SAMPredictor
+        from yolov8nd.models.sam import Predictor as SAMPredictor
 
         # Create SAMPredictor
         overrides = dict(conf=0.25, task='segment', mode='predict', imgsz=1024, model="mobile_sam.pt")
@@ -118,7 +118,7 @@ The Segment Anything Model can be employed for a multitude of downstream tasks t
     === "Segment everything"
 
         ```python
-        from ultralytics.models.sam import Predictor as SAMPredictor
+        from yolov8nd.models.sam import Predictor as SAMPredictor
 
         # Create SAMPredictor
         overrides = dict(conf=0.25, task='segment', mode='predict', imgsz=1024, model="mobile_sam.pt")
@@ -150,7 +150,7 @@ Tests run on a 2023 Apple M2 Macbook with 16GB of RAM. To reproduce this test:
     === "Python"
 
         ```python
-        from ultralytics import FastSAM, SAM, YOLO
+        from yolov8nd import FastSAM, SAM, YOLO
 
         # Profile SAM-b
         model = SAM('sam_b.pt')
@@ -186,7 +186,7 @@ To auto-annotate your dataset with the Ultralytics framework, use the `auto_anno
     === "Python"
 
         ```python
-        from ultralytics.data.annotator import auto_annotate
+        from yolov8nd.data.annotator import auto_annotate
 
         auto_annotate(data="path/to/images", det_model="yolov8x.pt", sam_model='sam_b.pt')
         ```

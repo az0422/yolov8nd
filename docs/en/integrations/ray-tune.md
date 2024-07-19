@@ -47,7 +47,7 @@ To install the required packages, run:
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a YOLOv8n model
         model = YOLO('yolov8n.pt')
@@ -106,7 +106,7 @@ In this example, we demonstrate how to use a custom search space for hyperparame
 !!! Example "Usage"
 
     ```python
-    from ultralytics import YOLO
+    from yolov8nd import YOLO
 
     # Define a YOLO model
     model = YOLO("yolov8n.pt")

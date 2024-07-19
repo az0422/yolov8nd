@@ -24,7 +24,7 @@ For example, users can load a model, train it, evaluate its performance on a val
 !!! Example "Python"
 
     ```python
-    from ultralytics import YOLO
+    from yolov8nd import YOLO
 
     # Create a new YOLO model from scratch
     model = YOLO('yolov8n.yaml')
@@ -54,7 +54,7 @@ Train mode is used for training a YOLOv8 model on a custom dataset. In this mode
     === "From pretrained(recommended)"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         model = YOLO('yolov8n.pt') # pass any model type
         results = model.train(epochs=5)
@@ -63,7 +63,7 @@ Train mode is used for training a YOLOv8 model on a custom dataset. In this mode
     === "From scratch"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         model = YOLO('yolov8n.yaml')
         results = model.train(data='coco128.yaml', epochs=5)
@@ -87,7 +87,7 @@ Val mode is used for validating a YOLOv8 model after it has been trained. In thi
     === "Val after training"
 
         ```python
-          from ultralytics import YOLO
+          from yolov8nd import YOLO
 
           model = YOLO('yolov8n.yaml')
           model.train(data='coco128.yaml', epochs=5)
@@ -97,7 +97,7 @@ Val mode is used for validating a YOLOv8 model after it has been trained. In thi
     === "Val independently"
 
         ```python
-          from ultralytics import YOLO
+          from yolov8nd import YOLO
 
           model = YOLO("model.pt")
           # It'll use the data YAML file in model.pt if you don't set data.
@@ -117,7 +117,7 @@ Predict mode is used for making predictions using a trained YOLOv8 model on new 
     === "From source"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
         from PIL import Image
         import cv2
 
@@ -188,7 +188,7 @@ Export mode is used for exporting a YOLOv8 model to a format that can be used fo
 
         Export an official YOLOv8n model to ONNX with dynamic batch-size and image-size.
         ```python
-          from ultralytics import YOLO
+          from yolov8nd import YOLO
 
           model = YOLO('yolov8n.pt')
           model.export(format='onnx', dynamic=True)
@@ -198,7 +198,7 @@ Export mode is used for exporting a YOLOv8 model to a format that can be used fo
 
         Export an official YOLOv8n model to TensorRT on `device=0` for acceleration on CUDA devices.
         ```python
-          from ultralytics import YOLO
+          from yolov8nd import YOLO
 
           model = YOLO('yolov8n.pt')
           model.export(format='onnx', device=0)
@@ -215,7 +215,7 @@ Track mode is used for tracking objects in real-time using a YOLOv8 model. In th
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n.pt')  # load an official detection model
@@ -239,7 +239,7 @@ Benchmark mode is used to profile the speed and accuracy of various export forma
 
         Benchmark an official YOLOv8n model across all export formats.
         ```python
-        from ultralytics.utils.benchmarks import benchmark
+        from yolov8nd.utils.benchmarks import benchmark
 
         # Benchmark
         benchmark(model='yolov8n.pt', data='coco8.yaml', imgsz=640, half=False, device=0)
@@ -256,7 +256,7 @@ Explorer API can be used to explore datasets with advanced semantic, vector-simi
     === "Using Images"
 
         ```python
-        from ultralytics import Explorer
+        from yolov8nd import Explorer
 
         # create an Explorer object
         exp = Explorer(data='coco128.yaml', model='yolov8n.pt')
@@ -277,7 +277,7 @@ Explorer API can be used to explore datasets with advanced semantic, vector-simi
     === "Using Dataset Indices"
 
         ```python
-        from ultralytics import Explorer
+        from yolov8nd import Explorer
 
         # create an Explorer object
         exp = Explorer(data='coco128.yaml', model='yolov8n.pt')
@@ -300,7 +300,7 @@ Explorer API can be used to explore datasets with advanced semantic, vector-simi
 !!! Tip "Detection Trainer Example"
 
         ```python
-        from ultralytics.models.yolo import DetectionTrainer, DetectionValidator, DetectionPredictor
+        from yolov8nd.models.yolo import DetectionTrainer, DetectionValidator, DetectionPredictor
 
         # trainer
         trainer = DetectionTrainer(overrides={})

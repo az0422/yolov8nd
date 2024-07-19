@@ -31,7 +31,7 @@ To train a YOLOv8n-seg model on the COCO8-Seg dataset for 100 epochs with an ima
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n-seg.pt')  # load a pretrained model (recommended for training)

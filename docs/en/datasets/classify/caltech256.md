@@ -33,7 +33,7 @@ To train a YOLO model on the Caltech-256 dataset for 100 epochs, you can use the
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n-cls.pt')  # load a pretrained model (recommended for training)

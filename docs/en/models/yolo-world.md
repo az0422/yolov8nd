@@ -73,7 +73,7 @@ Object detection is straightforward with the `predict` method, as illustrated be
     === "Python"
 
         ```python
-        from ultralytics import YOLOWorld
+        from yolov8nd import YOLOWorld
 
         # Initialize a YOLO-World model
         model = YOLOWorld('yolov8s-world.pt')  # or select yolov8m/l-world.pt for different sizes
@@ -103,7 +103,7 @@ Model validation on a dataset is streamlined as follows:
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Create a YOLO-World model
         model = YOLO('yolov8s-world.pt')  # or select yolov8m/l-world.pt for different sizes
@@ -136,7 +136,7 @@ For instance, if your application only requires detecting 'person' and 'bus' obj
     === "Custom Inference Prompts"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Initialize a YOLO-World model
         model = YOLO('yolov8s-world.pt')  # or choose yolov8m/l-world.pt
@@ -160,7 +160,7 @@ You can also save a model after setting custom classes. By doing this you create
         First load a YOLO-World model, set custom classes for it and save it:
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Initialize a YOLO-World model
         model = YOLO('yolov8s-world.pt')  # or select yolov8m/l-world.pt
@@ -175,7 +175,7 @@ You can also save a model after setting custom classes. By doing this you create
         After saving, the custom_yolov8s.pt model behaves like any other pre-trained YOLOv8 model but with a key difference: it is now optimized to detect only the classes you have defined. This customization can significantly improve detection performance and efficiency for your specific application scenarios.
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load your custom model
         model = YOLO('custom_yolov8s.pt')

@@ -76,7 +76,7 @@ Before diving into the usage instructions, it's important to note that while all
     === "Python"
 
           ```python
-          from ultralytics import YOLO
+          from yolov8nd import YOLO
           
           # Load the YOLOv8 model
           model = YOLO('yolov8n.pt')

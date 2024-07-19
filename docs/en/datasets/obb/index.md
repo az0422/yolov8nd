@@ -37,7 +37,7 @@ To train a model using these OBB formats:
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Create a new YOLOv8n-OBB model from scratch
         model = YOLO('yolov8n-obb.yaml')
@@ -76,7 +76,7 @@ Transitioning labels from the DOTA dataset format to the YOLO OBB format can be 
     === "Python"
 
         ```python
-        from ultralytics.data.converter import convert_dota_to_yolo_obb
+        from yolov8nd.data.converter import convert_dota_to_yolo_obb
 
         convert_dota_to_yolo_obb('path/to/DOTA')
         ```

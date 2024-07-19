@@ -28,8 +28,8 @@ Monitoring workouts through pose estimation with [Ultralytics YOLOv8](https://gi
     === "Workouts Monitoring"
 
         ```python
-        from ultralytics import YOLO
-        from ultralytics.solutions import ai_gym
+        from yolov8nd import YOLO
+        from yolov8nd.solutions import ai_gym
         import cv2
 
         model = YOLO("yolov8n-pose.pt")
@@ -59,8 +59,8 @@ Monitoring workouts through pose estimation with [Ultralytics YOLOv8](https://gi
     === "Workouts Monitoring with Save Output"
 
         ```python
-        from ultralytics import YOLO
-        from ultralytics.solutions import ai_gym
+        from yolov8nd import YOLO
+        from yolov8nd.solutions import ai_gym
         import cv2
 
         model = YOLO("yolov8n-pose.pt")

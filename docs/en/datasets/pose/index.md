@@ -69,7 +69,7 @@ The `train` and `val` fields specify the paths to the directories containing the
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n-pose.pt')  # load a pretrained model (recommended for training)
@@ -130,7 +130,7 @@ Ultralytics provides a convenient conversion tool to convert labels from the pop
     === "Python"
 
         ```python
-        from ultralytics.data.converter import convert_coco
+        from yolov8nd.data.converter import convert_coco
 
         convert_coco(labels_dir='path/to/coco/annotations/', use_keypoints=True)
         ```

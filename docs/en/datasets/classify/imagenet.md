@@ -36,7 +36,7 @@ To train a deep learning model on the ImageNet dataset for 100 epochs with an im
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n-cls.pt')  # load a pretrained model (recommended for training)

@@ -53,7 +53,7 @@ Train YOLOv8n-cls on the MNIST160 dataset for 100 epochs at image size 64. For a
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n-cls.yaml')  # build a new model from YAML
@@ -90,7 +90,7 @@ Validate trained YOLOv8n-cls model accuracy on the MNIST160 dataset. No argument
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n-cls.pt')  # load an official model
@@ -117,7 +117,7 @@ Use a trained YOLOv8n-cls model to run predictions on images.
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n-cls.pt')  # load an official model
@@ -144,7 +144,7 @@ Export a YOLOv8n-cls model to a different format like ONNX, CoreML, etc.
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n-cls.pt')  # load an official model

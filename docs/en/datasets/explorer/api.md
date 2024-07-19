@@ -33,7 +33,7 @@ pip install ultralytics[explorer]
 ## Usage
 
 ```python
-from ultralytics import Explorer
+from yolov8nd import Explorer
 
 # Create an Explorer object
 explorer = Explorer(data='coco128.yaml', model='yolov8n.pt')
@@ -71,7 +71,7 @@ You get a pandas dataframe with the `limit` number of most similar data points t
     === "Using Images"
 
         ```python
-        from ultralytics import Explorer
+        from yolov8nd import Explorer
 
         # create an Explorer object
         exp = Explorer(data='coco128.yaml', model='yolov8n.pt')
@@ -92,7 +92,7 @@ You get a pandas dataframe with the `limit` number of most similar data points t
     === "Using Dataset Indices"
 
         ```python
-        from ultralytics import Explorer
+        from yolov8nd import Explorer
 
         # create an Explorer object
         exp = Explorer(data='coco128.yaml', model='yolov8n.pt')
@@ -115,7 +115,7 @@ You can also plot the similar images using the `plot_similar` method. This metho
     === "Using Images"
 
         ```python
-        from ultralytics import Explorer
+        from yolov8nd import Explorer
 
         # create an Explorer object
         exp = Explorer(data='coco128.yaml', model='yolov8n.pt')
@@ -128,7 +128,7 @@ You can also plot the similar images using the `plot_similar` method. This metho
     === "Using Dataset Indices"
 
         ```python
-        from ultralytics import Explorer
+        from yolov8nd import Explorer
 
         # create an Explorer object
         exp = Explorer(data='coco128.yaml', model='yolov8n.pt')
@@ -146,8 +146,8 @@ Note: This works using LLMs under the hood so the results are probabilistic and 
 !!! Example "Ask AI"
 
     ```python
-    from ultralytics import Explorer
-    from ultralytics.data.explorer import plot_query_result
+    from yolov8nd import Explorer
+    from yolov8nd.data.explorer import plot_query_result
 
 
     # create an Explorer object
@@ -169,7 +169,7 @@ You can run SQL queries on your dataset using the `sql_query` method. This metho
 !!! Example "SQL Query"
 
     ```python
-    from ultralytics import Explorer
+    from yolov8nd import Explorer
 
     # create an Explorer object
     exp = Explorer(data='coco128.yaml', model='yolov8n.pt')
@@ -186,7 +186,7 @@ You can also plot the results of a SQL query using the `plot_sql_query` method. 
 !!! Example "Plotting SQL Query Results"
 
     ```python
-    from ultralytics import Explorer
+    from yolov8nd import Explorer
 
     # create an Explorer object
     exp = Explorer(data='coco128.yaml', model='yolov8n.pt')
@@ -203,7 +203,7 @@ You can also work with the embeddings table directly. Once the embeddings table 
 !!! Tip "Explorer works on [LanceDB](https://lancedb.github.io/lancedb/) tables internally. You can access this table directly, using `Explorer.table` object and run raw queries, push down pre- and post-filters, etc."
 
     ```python
-    from ultralytics import Explorer
+    from yolov8nd import Explorer
 
     exp = Explorer()
     exp.create_embeddings_table()
@@ -217,7 +217,7 @@ Here are some examples of what you can do with the table:
 !!! Example
 
     ```python
-    from ultralytics import Explorer
+    from yolov8nd import Explorer
 
     exp = Explorer()
     exp.create_embeddings_table()
@@ -232,7 +232,7 @@ Here are some examples of what you can do with the table:
 !!! Example
 
     ```python
-    from ultralytics import Explorer
+    from yolov8nd import Explorer
 
     exp = Explorer(model="yolov8n.pt")
     exp.create_embeddings_table()
@@ -278,7 +278,7 @@ It returns a pandas dataframe with the following columns:
 !!! Example "Similarity Index"
 
     ```python
-    from ultralytics import Explorer
+    from yolov8nd import Explorer
 
     exp = Explorer()
     exp.create_embeddings_table()

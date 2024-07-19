@@ -74,7 +74,7 @@ Here's how to use the `model.tune()` method to utilize the `Tuner` class for hyp
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Initialize the YOLO model
         model = YOLO('yolov8n.pt')

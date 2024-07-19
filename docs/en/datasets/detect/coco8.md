@@ -31,7 +31,7 @@ To train a YOLOv8n model on the COCO8 dataset for 100 epochs with an image size 
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n.pt')  # load a pretrained model (recommended for training)

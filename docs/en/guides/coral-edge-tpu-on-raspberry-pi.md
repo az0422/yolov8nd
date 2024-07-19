@@ -79,7 +79,7 @@ To use the Edge TPU, you need to convert your model into a compatible format. It
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('path/to/model.pt')  # Load a official model or custom model
@@ -105,7 +105,7 @@ After exporting your model, you can run inference with it using the following co
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('path/to/edgetpu_model.tflite')  # Load a official model or custom model

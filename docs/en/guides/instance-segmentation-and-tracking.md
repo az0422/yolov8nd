@@ -40,8 +40,8 @@ There are two types of instance segmentation tracking available in the Ultralyti
 
         ```python
         import cv2
-        from ultralytics import YOLO
-        from ultralytics.utils.plotting import Annotator, colors
+        from yolov8nd import YOLO
+        from yolov8nd.utils.plotting import Annotator, colors
 
         model = YOLO("yolov8n-seg.pt")  # segmentation model
         names = model.model.names
@@ -83,8 +83,8 @@ There are two types of instance segmentation tracking available in the Ultralyti
 
         ```python
         import cv2
-        from ultralytics import YOLO
-        from ultralytics.utils.plotting import Annotator, colors
+        from yolov8nd import YOLO
+        from yolov8nd.utils.plotting import Annotator, colors
 
         from collections import defaultdict
 

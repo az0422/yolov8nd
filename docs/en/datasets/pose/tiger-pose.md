@@ -44,7 +44,7 @@ To train a YOLOv8n-pose model on the Tiger-Pose dataset for 100 epochs with an i
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n-pose.pt')  # load a pretrained model (recommended for training)
@@ -77,7 +77,7 @@ The example showcases the variety and complexity of the images in the Tiger-Pose
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('path/to/best.pt')  # load a tiger-pose trained model

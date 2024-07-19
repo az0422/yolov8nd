@@ -47,7 +47,7 @@ To train a YOLOv8n model on the SKU-110K dataset for 100 epochs with an image si
     === "Python"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n.pt')  # load a pretrained model (recommended for training)

@@ -44,8 +44,8 @@ A heatmap generated with [Ultralytics YOLOv8](https://github.com/ultralytics/ult
     === "Heatmap"
 
         ```python
-        from ultralytics import YOLO
-        from ultralytics.solutions import heatmap
+        from yolov8nd import YOLO
+        from yolov8nd.solutions import heatmap
         import cv2
 
         model = YOLO("yolov8n.pt")
@@ -86,8 +86,8 @@ A heatmap generated with [Ultralytics YOLOv8](https://github.com/ultralytics/ult
     === "Line Counting"
 
         ```python
-        from ultralytics import YOLO
-        from ultralytics.solutions import heatmap
+        from yolov8nd import YOLO
+        from yolov8nd.solutions import heatmap
         import cv2
 
         model = YOLO("yolov8n.pt")
@@ -130,8 +130,8 @@ A heatmap generated with [Ultralytics YOLOv8](https://github.com/ultralytics/ult
     === "Region Counting"
 
         ```python
-        from ultralytics import YOLO
-        from ultralytics.solutions import heatmap
+        from yolov8nd import YOLO
+        from yolov8nd.solutions import heatmap
         import cv2
 
         model = YOLO("yolov8n.pt")
@@ -175,8 +175,8 @@ A heatmap generated with [Ultralytics YOLOv8](https://github.com/ultralytics/ult
     === "Im0"
 
         ```python
-        from ultralytics import YOLO
-        from ultralytics.solutions import heatmap
+        from yolov8nd import YOLO
+        from yolov8nd.solutions import heatmap
         import cv2
 
         model = YOLO("yolov8s.pt")   # YOLOv8 custom/pretrained model
@@ -200,8 +200,8 @@ A heatmap generated with [Ultralytics YOLOv8](https://github.com/ultralytics/ult
     === "Specific Classes"
 
         ```python
-        from ultralytics import YOLO
-        from ultralytics.solutions import heatmap
+        from yolov8nd import YOLO
+        from yolov8nd.solutions import heatmap
         import cv2
 
         model = YOLO("yolov8n.pt")

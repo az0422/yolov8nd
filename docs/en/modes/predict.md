@@ -55,7 +55,7 @@ Ultralytics YOLO models return either a Python list of `Results` objects, or a m
     === "Return a list with `stream=False`"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n.pt')  # pretrained YOLOv8n model
@@ -76,7 +76,7 @@ Ultralytics YOLO models return either a Python list of `Results` objects, or a m
     === "Return a generator with `stream=True`"
 
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a model
         model = YOLO('yolov8n.pt')  # pretrained YOLOv8n model
@@ -127,7 +127,7 @@ Below are code examples for using each source type:
 
         Run inference on an image file.
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a pretrained YOLOv8n model
         model = YOLO('yolov8n.pt')
@@ -143,7 +143,7 @@ Below are code examples for using each source type:
 
         Run inference on the current screen content as a screenshot.
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a pretrained YOLOv8n model
         model = YOLO('yolov8n.pt')
@@ -159,7 +159,7 @@ Below are code examples for using each source type:
 
         Run inference on an image or video hosted remotely via URL.
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a pretrained YOLOv8n model
         model = YOLO('yolov8n.pt')
@@ -176,7 +176,7 @@ Below are code examples for using each source type:
         Run inference on an image opened with Python Imaging Library (PIL).
         ```python
         from PIL import Image
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a pretrained YOLOv8n model
         model = YOLO('yolov8n.pt')
@@ -193,7 +193,7 @@ Below are code examples for using each source type:
         Run inference on an image read with OpenCV.
         ```python
         import cv2
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a pretrained YOLOv8n model
         model = YOLO('yolov8n.pt')
@@ -210,7 +210,7 @@ Below are code examples for using each source type:
         Run inference on an image represented as a numpy array.
         ```python
         import numpy as np
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a pretrained YOLOv8n model
         model = YOLO('yolov8n.pt')
@@ -227,7 +227,7 @@ Below are code examples for using each source type:
         Run inference on an image represented as a PyTorch tensor.
         ```python
         import torch
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a pretrained YOLOv8n model
         model = YOLO('yolov8n.pt')
@@ -244,7 +244,7 @@ Below are code examples for using each source type:
         Run inference on a collection of images, URLs, videos and directories listed in a CSV file.
         ```python
         import torch
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a pretrained YOLOv8n model
         model = YOLO('yolov8n.pt')
@@ -260,7 +260,7 @@ Below are code examples for using each source type:
 
         Run inference on a video file. By using `stream=True`, you can create a generator of Results objects to reduce memory usage.
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a pretrained YOLOv8n model
         model = YOLO('yolov8n.pt')
@@ -276,7 +276,7 @@ Below are code examples for using each source type:
 
         Run inference on all images and videos in a directory. To also capture images and videos in subdirectories use a glob pattern, i.e. `path/to/dir/**/*`.
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a pretrained YOLOv8n model
         model = YOLO('yolov8n.pt')
@@ -292,7 +292,7 @@ Below are code examples for using each source type:
 
         Run inference on all images and videos that match a glob expression with `*` characters.
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a pretrained YOLOv8n model
         model = YOLO('yolov8n.pt')
@@ -311,7 +311,7 @@ Below are code examples for using each source type:
 
         Run inference on a YouTube video. By using `stream=True`, you can create a generator of Results objects to reduce memory usage for long videos.
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a pretrained YOLOv8n model
         model = YOLO('yolov8n.pt')
@@ -327,7 +327,7 @@ Below are code examples for using each source type:
 
         Run inference on remote streaming sources using RTSP, RTMP, TCP and IP address protocols. If multiple streams are provided in a `*.streams` text file then batched inference will run, i.e. 8 streams will run at batch-size 8, otherwise single streams will run at batch-size 1.
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a pretrained YOLOv8n model
         model = YOLO('yolov8n.pt')
@@ -349,7 +349,7 @@ Below are code examples for using each source type:
 !!! Example
 
     ```python
-    from ultralytics import YOLO
+    from yolov8nd import YOLO
 
     # Load a pretrained YOLOv8n model
     model = YOLO('yolov8n.pt')
@@ -440,7 +440,7 @@ All Ultralytics `predict()` calls will return a list of `Results` objects:
 !!! Example "Results"
 
     ```python
-    from ultralytics import YOLO
+    from yolov8nd import YOLO
 
     # Load a pretrained YOLOv8n model
     model = YOLO('yolov8n.pt')
@@ -492,7 +492,7 @@ For more details see the [`Results` class documentation](../reference/engine/res
 !!! Example "Boxes"
 
     ```python
-    from ultralytics import YOLO
+    from yolov8nd import YOLO
 
     # Load a pretrained YOLOv8n model
     model = YOLO('yolov8n.pt')
@@ -530,7 +530,7 @@ For more details see the [`Boxes` class documentation](../reference/engine/resul
 !!! Example "Masks"
 
     ```python
-    from ultralytics import YOLO
+    from yolov8nd import YOLO
 
     # Load a pretrained YOLOv8n-seg Segment model
     model = YOLO('yolov8n-seg.pt')
@@ -563,7 +563,7 @@ For more details see the [`Masks` class documentation](../reference/engine/resul
 !!! Example "Keypoints"
 
     ```python
-    from ultralytics import YOLO
+    from yolov8nd import YOLO
 
     # Load a pretrained YOLOv8n-pose Pose model
     model = YOLO('yolov8n-pose.pt')
@@ -597,7 +597,7 @@ For more details see the [`Keypoints` class documentation](../reference/engine/r
 !!! Example "Probs"
 
     ```python
-    from ultralytics import YOLO
+    from yolov8nd import YOLO
 
     # Load a pretrained YOLOv8n-cls Classify model
     model = YOLO('yolov8n-cls.pt')
@@ -632,7 +632,7 @@ For more details see the [`Probs` class documentation](../reference/engine/resul
 !!! Example "OBB"
 
     ```python
-    from ultralytics import YOLO
+    from yolov8nd import YOLO
 
     # Load a pretrained YOLOv8n model
     model = YOLO('yolov8n-obb.pt')
@@ -671,7 +671,7 @@ The `plot()` method in `Results` objects facilitates visualization of prediction
 
     ```python
     from PIL import Image
-    from ultralytics import YOLO
+    from yolov8nd import YOLO
 
     # Load a pretrained YOLOv8n model
     model = YOLO('yolov8n.pt')
@@ -725,7 +725,7 @@ When using YOLO models in a multi-threaded application, it's important to instan
 
     Instantiate a single model inside each thread for thread-safe inference:
     ```python
-    from ultralytics import YOLO
+    from yolov8nd import YOLO
     from threading import Thread
 
     def thread_safe_predict(image_path):
@@ -750,7 +750,7 @@ Here's a Python script using OpenCV (`cv2`) and YOLOv8 to run inference on video
 
     ```python
     import cv2
-    from ultralytics import YOLO
+    from yolov8nd import YOLO
 
     # Load the YOLOv8 model
     model = YOLO('yolov8n.pt')
