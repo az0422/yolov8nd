@@ -11,8 +11,8 @@ class SegmentationPredictor(DetectionPredictor):
 
     Example:
         ```python
-        from yolov8nd.utils import ASSETS
-        from yolov8nd.models.yolo.segment import SegmentationPredictor
+        from ultralytics.utils import ASSETS
+        from ultralytics.models.yolo.segment import SegmentationPredictor
 
         args = dict(model="yolov8n-seg.pt", source=ASSETS)
         predictor = SegmentationPredictor(overrides=args)

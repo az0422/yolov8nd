@@ -13,8 +13,8 @@ class WorldTrainerFromScratch(WorldTrainer):
 
     Example:
         ```python
-        from yolov8nd.models.yolo.world.train_world import WorldTrainerFromScratch
-        from yolov8nd import YOLOWorld
+        from ultralytics.models.yolo.world.train_world import WorldTrainerFromScratch
+        from ultralytics import YOLOWorld
 
         data = dict(
             train=dict(

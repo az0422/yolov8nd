@@ -121,7 +121,7 @@ class BaseTensor(SimpleClass):
 
         Examples:
             >>> import torch
-            >>> from yolov8nd.engine.results import BaseTensor
+            >>> from ultralytics.engine.results import BaseTensor
             >>> data = torch.tensor([[1, 2, 3], [4, 5, 6]])
             >>> base_tensor = BaseTensor(data, orig_shape=(720, 1280))
             >>> gpu_tensor = base_tensor.cuda()
@@ -659,7 +659,7 @@ class Results(SimpleClass):
             (str): Path to the saved text file.
 
         Examples:
-            >>> from yolov8nd import YOLO
+            >>> from ultralytics import YOLO
             >>> model = YOLO("yolov8n.pt")
             >>> results = model("path/to/image.jpg")
             >>> for result in results:
@@ -1092,7 +1092,7 @@ class Masks(BaseTensor):
 
         Examples:
             >>> import torch
-            >>> from yolov8nd.engine.results import Masks
+            >>> from ultralytics.engine.results import Masks
             >>> masks = torch.rand(10, 160, 160)  # 10 masks of 160x160 resolution
             >>> orig_shape = (720, 1280)  # Original image shape
             >>> mask_obj = Masks(masks, orig_shape)
@@ -1176,7 +1176,7 @@ class Keypoints(BaseTensor):
 
     Examples:
         >>> import torch
-        >>> from yolov8nd.engine.results import Keypoints
+        >>> from ultralytics.engine.results import Keypoints
         >>> keypoints_data = torch.rand(1, 17, 3)  # 1 detection, 17 keypoints, (x, y, conf)
         >>> orig_shape = (480, 640)  # Original image shape (height, width)
         >>> keypoints = Keypoints(keypoints_data, orig_shape)
@@ -1619,7 +1619,7 @@ class OBB(BaseTensor):
 
         Examples:
             >>> import torch
-            >>> from yolov8nd import YOLO
+            >>> from ultralytics import YOLO
             >>> model = YOLO("yolov8n-obb.pt")
             >>> results = model("path/to/image.jpg")
             >>> for result in results:

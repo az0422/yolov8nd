@@ -20,7 +20,7 @@ class SegmentationValidator(DetectionValidator):
 
     Example:
         ```python
-        from yolov8nd.models.yolo.segment import SegmentationValidator
+        from ultralytics.models.yolo.segment import SegmentationValidator
 
         args = dict(model="yolov8n-seg.pt", data="coco8-seg.yaml")
         validator = SegmentationValidator(args=args)

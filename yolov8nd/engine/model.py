@@ -71,7 +71,7 @@ class Model(nn.Module):
         reset_callbacks: Resets all callbacks to their default functions.
 
     Examples:
-        >>> from yolov8nd import YOLO
+        >>> from ultralytics import YOLO
         >>> model = YOLO("yolov8n.pt")
         >>> results = model.predict("image.jpg")
         >>> model.train(data="coco128.yaml", epochs=3)
@@ -95,7 +95,7 @@ class Model(nn.Module):
 
         Args:
             model (Union[str, Path]): Path or name of the model to load or create. Can be a local file path, a
-                model name from yolov8nd HUB, or a Triton Server model.
+                model name from Ultralytics HUB, or a Triton Server model.
             task (str | None): The task type associated with the YOLO model, specifying its application domain.
             verbose (bool): If True, enables verbose output during the model's initialization and subsequent
                 operations.

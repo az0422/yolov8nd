@@ -4,7 +4,7 @@ YOLO-NAS model interface.
 
 Example:
     ```python
-    from yolov8nd import NAS
+    from ultralytics import NAS
 
     model = NAS("yolo_nas_s")
     results = model.predict("ultralytics/assets/bus.jpg")
@@ -27,12 +27,12 @@ class NAS(Model):
     """
     YOLO NAS model for object detection.
 
-    This class provides an interface for the YOLO-NAS models and extends the `Model` class from yolov8nd engine.
+    This class provides an interface for the YOLO-NAS models and extends the `Model` class from Ultralytics engine.
     It is designed to facilitate the task of object detection using pre-trained or custom-trained YOLO-NAS models.
 
     Example:
         ```python
-        from yolov8nd import NAS
+        from ultralytics import NAS
 
         model = NAS("yolo_nas_s")
         results = model.predict("ultralytics/assets/bus.jpg")

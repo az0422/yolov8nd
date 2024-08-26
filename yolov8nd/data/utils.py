@@ -434,7 +434,7 @@ class HUBDatasetStats:
         Download *.zip files from https://github.com/ultralytics/hub/tree/main/example_datasets
             i.e. https://github.com/ultralytics/hub/raw/main/example_datasets/coco8.zip for coco8.zip.
         ```python
-        from yolov8nd.data.utils import HUBDatasetStats
+        from ultralytics.data.utils import HUBDatasetStats
 
         stats = HUBDatasetStats("path/to/coco8.zip", task="detect")  # detect dataset
         stats = HUBDatasetStats("path/to/coco8-seg.zip", task="segment")  # segment dataset
@@ -594,7 +594,7 @@ def compress_one_image(f, f_new=None, max_dim=1920, quality=50):
     Example:
         ```python
         from pathlib import Path
-        from yolov8nd.data.utils import compress_one_image
+        from ultralytics.data.utils import compress_one_image
 
         for f in Path("path/to/dataset").rglob("*.jpg"):
             compress_one_image(f)
@@ -627,7 +627,7 @@ def autosplit(path=DATASETS_DIR / "coco8/images", weights=(0.9, 0.1, 0.0), annot
 
     Example:
         ```python
-        from yolov8nd.data.utils import autosplit
+        from ultralytics.data.utils import autosplit
 
         autosplit()
         ```

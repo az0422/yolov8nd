@@ -18,7 +18,7 @@ yolo task=detect mode=train model=yolov8n.yaml data=coco8.yaml epochs=100
 They may also be used directly in a Python environment, and accept the same [arguments](https://docs.ultralytics.com/usage/cfg/) as in the CLI example above:
 
 ```python
-from yolov8nd import YOLO
+from ultralytics import YOLO
 
 # Initialize a YOLOv8n model from a YAML configuration file
 model = YOLO("model.yaml")

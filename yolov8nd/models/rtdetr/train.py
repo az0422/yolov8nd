@@ -23,7 +23,7 @@ class RTDETRTrainer(DetectionTrainer):
 
     Example:
         ```python
-        from yolov8nd.models.rtdetr.train import RTDETRTrainer
+        from ultralytics.models.rtdetr.train import RTDETRTrainer
 
         args = dict(model="rtdetr-l.yaml", data="coco8.yaml", imgsz=640, epochs=3)
         trainer = RTDETRTrainer(overrides=args)

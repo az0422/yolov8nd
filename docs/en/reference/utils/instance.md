@@ -1,5 +1,5 @@
 ---
-description: Dive into Ultralytics detailed utility guide. Learn about Bboxes, _ntuple and more from yolov8nd utils.instance module.
+description: Dive into Ultralytics detailed utility guide. Learn about Bboxes, _ntuple and more from Ultralytics utils.instance module.
 keywords: Ultralytics, Bboxes, _ntuple, utility, ultralytics utils.instance
 ---
 

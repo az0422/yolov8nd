@@ -91,7 +91,7 @@ class YOLOv8Seg:
             pad_h (float): height padding in letterbox.
         """
 
-        # Resize and pad input image using letterbox() (Borrowed from yolov8nd)
+        # Resize and pad input image using letterbox() (Borrowed from Ultralytics)
         shape = img.shape[:2]  # original image shape
         new_shape = (self.model_height, self.model_width)
         r = min(new_shape[0] / shape[0], new_shape[1] / shape[1])

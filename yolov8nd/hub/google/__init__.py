@@ -24,7 +24,7 @@ class GCPRegions:
         lowest_latency: Determines the GCP region(s) with the lowest network latency.
 
     Examples:
-        >>> from yolov8nd.hub.google import GCPRegions
+        >>> from ultralytics.hub.google import GCPRegions
         >>> regions = GCPRegions()
         >>> lowest_latency_region = regions.lowest_latency(verbose=True, attempts=3)
         >>> print(f"Lowest latency region: {lowest_latency_region[0][0]}")

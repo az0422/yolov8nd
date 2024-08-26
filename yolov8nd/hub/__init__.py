@@ -73,7 +73,7 @@ def logout():
 
     Example:
         ```python
-        from yolov8nd import hub
+        from ultralytics import hub
 
         hub.logout()
         ```
@@ -134,7 +134,7 @@ def check_dataset(path: str, task: str) -> None:
         Download *.zip files from https://github.com/ultralytics/hub/tree/main/example_datasets
             i.e. https://github.com/ultralytics/hub/raw/main/example_datasets/coco8.zip for coco8.zip.
         ```python
-        from yolov8nd.hub import check_dataset
+        from ultralytics.hub import check_dataset
 
         check_dataset("path/to/coco8.zip", task="detect")  # detect dataset
         check_dataset("path/to/coco8-seg.zip", task="segment")  # segment dataset

@@ -23,7 +23,7 @@ WORKDIR /usr/src/ultralytics
 RUN git clone https://github.com/ultralytics/ultralytics -b main /usr/src/ultralytics
 ADD https://github.com/ultralytics/assets/releases/download/v8.1.0/yolov8n.pt /usr/src/ultralytics/
 
-# Remove opencv-python from yolov8nd dependencies as it conflicts with opencv-python installed in base image
+# Remove opencv-python from Ultralytics dependencies as it conflicts with opencv-python installed in base image
 RUN grep -v "opencv-python" pyproject.toml > temp.toml && mv temp.toml pyproject.toml
 
 # Install pip packages manually for TensorRT compatibility https://github.com/NVIDIA/TensorRT/issues/2567

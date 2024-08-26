@@ -2,7 +2,7 @@
 """
 SAM model interface.
 
-This module provides an interface to the Segment Anything Model (SAM) from yolov8nd, designed for real-time image
+This module provides an interface to the Segment Anything Model (SAM) from Ultralytics, designed for real-time image
 segmentation tasks. The SAM model allows for promptable segmentation with unparalleled versatility in image analysis,
 and has been trained on the SA-1B dataset. It features zero-shot performance capabilities, enabling it to adapt to new
 image distributions and tasks without prior knowledge.
@@ -27,7 +27,7 @@ class SAM(Model):
     """
     SAM (Segment Anything Model) interface class for real-time image segmentation tasks.
 
-    This class provides an interface to the Segment Anything Model (SAM) from yolov8nd, designed for
+    This class provides an interface to the Segment Anything Model (SAM) from Ultralytics, designed for
     promptable segmentation with versatility in image analysis. It supports various prompts such as bounding
     boxes, points, or labels, and features zero-shot performance capabilities.
 

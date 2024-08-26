@@ -308,7 +308,7 @@ The table below provides an overview of the settings available for adjustment wi
 
 | Name               | Example Value         | Data Type | Description                                                                                                      |
 |--------------------|-----------------------|-----------|------------------------------------------------------------------------------------------------------------------|
-| `settings_version` | `'0.0.4'`             | `str`     | Ultralytics _settings_ version (different from yolov8nd [pip](https://pypi.org/project/ultralytics/) version) |
+| `settings_version` | `'0.0.4'`             | `str`     | Ultralytics _settings_ version (different from Ultralytics [pip](https://pypi.org/project/ultralytics/) version) |
 | `datasets_dir`     | `'/path/to/datasets'` | `str`     | The directory where the datasets are stored                                                                      |
 | `weights_dir`      | `'/path/to/weights'`  | `str`     | The directory where the model weights are stored                                                                 |
 | `runs_dir`         | `'/path/to/runs'`     | `str`     | The directory where the experiment runs are stored                                                               |

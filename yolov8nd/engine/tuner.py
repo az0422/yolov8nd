@@ -10,7 +10,7 @@ where small changes in hyperparameters can lead to significant differences in mo
 Example:
     Tune hyperparameters for YOLOv8n on COCO8 at imgsz=640 and epochs=30 for 300 tuning iterations.
     ```python
-    from yolov8nd import YOLO
+    from ultralytics import YOLO
 
     model = YOLO("yolov8n.pt")
     model.tune(data="coco8.yaml", epochs=10, iterations=300, optimizer="AdamW", plots=False, save=False, val=False)
@@ -52,7 +52,7 @@ class Tuner:
     Example:
         Tune hyperparameters for YOLOv8n on COCO8 at imgsz=640 and epochs=30 for 300 tuning iterations.
         ```python
-        from yolov8nd import YOLO
+        from ultralytics import YOLO
 
         model = YOLO("yolov8n.pt")
         model.tune(data="coco8.yaml", epochs=10, iterations=300, optimizer="AdamW", plots=False, save=False, val=False)
@@ -60,7 +60,7 @@ class Tuner:
 
         Tune with custom search space.
         ```python
-        from yolov8nd import YOLO
+        from ultralytics import YOLO
 
         model = YOLO("yolov8n.pt")
         model.tune(space={key1: val1, key2: val2})  # custom search space dictionary

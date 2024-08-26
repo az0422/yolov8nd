@@ -13,8 +13,8 @@ class OBBPredictor(DetectionPredictor):
 
     Example:
         ```python
-        from yolov8nd.utils import ASSETS
-        from yolov8nd.models.yolo.obb import OBBPredictor
+        from ultralytics.utils import ASSETS
+        from ultralytics.models.yolo.obb import OBBPredictor
 
         args = dict(model="yolov8n-obb.pt", source=ASSETS)
         predictor = OBBPredictor(overrides=args)

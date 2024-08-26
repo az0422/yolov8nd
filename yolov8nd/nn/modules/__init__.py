@@ -5,7 +5,7 @@ Ultralytics modules.
 Example:
     Visualize a module with Netron.
     ```python
-    from yolov8nd.nn.modules import *
+    from ultralytics.nn.modules import *
     import torch
     import os
 

@@ -18,8 +18,8 @@ class RTDETRPredictor(BasePredictor):
 
     Example:
         ```python
-        from yolov8nd.utils import ASSETS
-        from yolov8nd.models.rtdetr import RTDETRPredictor
+        from ultralytics.utils import ASSETS
+        from ultralytics.models.rtdetr import RTDETRPredictor
 
         args = dict(model="rtdetr-l.pt", source=ASSETS)
         predictor = RTDETRPredictor(overrides=args)

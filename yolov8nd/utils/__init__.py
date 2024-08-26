@@ -55,7 +55,7 @@ HELP_MSG = """
 
     2. Use the Python SDK:
 
-        from yolov8nd import YOLO
+        from ultralytics import YOLO
 
         # Load a model
         model = YOLO("yolov8n.yaml")  # build a new model from scratch
@@ -131,7 +131,7 @@ class TQDM(tqdm_original):
         __init__: Initializes the TQDM object with custom settings.
 
     Examples:
-        >>> from yolov8nd.utils import TQDM
+        >>> from ultralytics.utils import TQDM
         >>> for i in TQDM(range(100)):
         ...     # Your processing code here
         ...     pass
@@ -152,7 +152,7 @@ class TQDM(tqdm_original):
             - The default bar format is set to TQDM_BAR_FORMAT unless overridden in kwargs.
 
         Examples:
-            >>> from yolov8nd.utils import TQDM
+            >>> from ultralytics.utils import TQDM
             >>> for i in TQDM(range(100)):
             ...     # Your code here
             ...     pass
@@ -405,7 +405,7 @@ class ThreadingLocked:
 
     Example:
         ```python
-        from yolov8nd.utils import ThreadingLocked
+        from ultralytics.utils import ThreadingLocked
 
         @ThreadingLocked()
         def my_function():
@@ -753,7 +753,7 @@ def get_ubuntu_version():
                 return re.search(r'VERSION_ID="(\d+\.\d+)"', f.read())[1]
 
 
-def get_user_config_dir(sub_dir="yolov8nd"):
+def get_user_config_dir(sub_dir="Ultralytics"):
     """
     Return the appropriate config directory based on the environment operating system.
 
