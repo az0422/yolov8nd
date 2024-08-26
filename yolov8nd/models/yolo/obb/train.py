@@ -13,9 +13,9 @@ class OBBTrainer(yolo.detect.DetectionTrainer):
 
     Example:
         ```python
-        from ultralytics.models.yolo.obb import OBBTrainer
+        from yolov8nd.models.yolo.obb import OBBTrainer
 
-        args = dict(model="yolov8n-obb.pt", data="dota8.yaml", epochs=3)
+        args = dict(model='yolov8n-obb.pt', data='dota8.yaml', epochs=3)
         trainer = OBBTrainer(overrides=args)
         trainer.train()
         ```

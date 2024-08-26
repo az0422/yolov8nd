@@ -20,5 +20,4 @@ __all__ = (
     "QueueManager",
     "SpeedEstimator",
     "Analytics",
-    "inference",
 )

@@ -13,10 +13,10 @@ class OBBPredictor(DetectionPredictor):
 
     Example:
         ```python
-        from ultralytics.utils import ASSETS
-        from ultralytics.models.yolo.obb import OBBPredictor
+        from yolov8nd.utils import ASSETS
+        from yolov8nd.models.yolo.obb import OBBPredictor
 
-        args = dict(model="yolov8n-obb.pt", source=ASSETS)
+        args = dict(model='yolov8n-obb.pt', source=ASSETS)
         predictor = OBBPredictor(overrides=args)
         predictor.predict_cli()
         ```

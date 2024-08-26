@@ -49,6 +49,7 @@ class QueueManager:
             region_thickness (int, optional): Thickness of the counting region lines. Defaults to 5.
             fontsize (float, optional): Font size for the text annotations. Defaults to 0.7.
         """
+
         # Mouse events state
         self.is_drawing = False
         self.selected_point = None
@@ -87,6 +88,7 @@ class QueueManager:
 
     def extract_and_process_tracks(self, tracks):
         """Extracts and processes tracks for queue management in a video stream."""
+
         # Initialize annotator and draw the queue region
         self.annotator = Annotator(self.im0, self.tf, self.names)
 

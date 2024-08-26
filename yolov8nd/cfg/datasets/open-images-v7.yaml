@@ -619,8 +619,8 @@ names:
 
 # Download script/URL (optional) ---------------------------------------------------------------------------------------
 download: |
-  from ultralytics.utils import LOGGER, SETTINGS, Path, is_ubuntu, get_ubuntu_version
-  from ultralytics.utils.checks import check_requirements, check_version
+  from yolov8nd.utils import LOGGER, SETTINGS, Path, is_ubuntu, get_ubuntu_version
+  from yolov8nd.utils.checks import check_requirements, check_version
 
   check_requirements('fiftyone')
   if is_ubuntu() and check_version(get_ubuntu_version(), '>=22.04'):

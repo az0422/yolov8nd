@@ -19,39 +19,27 @@ class GMC:
         method (str): The method used for tracking. Options include 'orb', 'sift', 'ecc', 'sparseOptFlow', 'none'.
         downscale (int): Factor by which to downscale the frames for processing.
         prevFrame (np.ndarray): Stores the previous frame for tracking.
-        prevKeyPoints (List): Stores the keypoints from the previous frame.
+        prevKeyPoints (list): Stores the keypoints from the previous frame.
         prevDescriptors (np.ndarray): Stores the descriptors from the previous frame.
         initializedFirstFrame (bool): Flag to indicate if the first frame has been processed.
 
     Methods:
-        __init__: Initializes a GMC object with the specified method and downscale factor.
-        apply: Applies the chosen method to a raw frame and optionally uses provided detections.
-        applyEcc: Applies the ECC algorithm to a raw frame.
-        applyFeatures: Applies feature-based methods like ORB or SIFT to a raw frame.
-        applySparseOptFlow: Applies the Sparse Optical Flow method to a raw frame.
-        reset_params: Resets the internal parameters of the GMC object.
-
-    Examples:
-        Create a GMC object and apply it to a frame
-        >>> gmc = GMC(method="sparseOptFlow", downscale=2)
-        >>> frame = np.array([[1, 2, 3], [4, 5, 6]])
-        >>> processed_frame = gmc.apply(frame)
-        >>> print(processed_frame)
-        array([[1, 2, 3],
-               [4, 5, 6]])
+        __init__(self, method='sparseOptFlow', downscale=2): Initializes a GMC object with the specified method
+                                                              and downscale factor.
+        apply(self, raw_frame, detections=None): Applies the chosen method to a raw frame and optionally uses
+                                                 provided detections.
+        applyEcc(self, raw_frame, detections=None): Applies the ECC algorithm to a raw frame.
+        applyFeatures(self, raw_frame, detections=None): Applies feature-based methods like ORB or SIFT to a raw frame.
+        applySparseOptFlow(self, raw_frame, detections=None): Applies the Sparse Optical Flow method to a raw frame.
     """
 
     def __init__(self, method: str = "sparseOptFlow", downscale: int = 2) -> None:
         """
-        Initialize a Generalized Motion Compensation (GMC) object with tracking method and downscale factor.
+        Initialize a video tracker with specified parameters.
 
         Args:
             method (str): The method used for tracking. Options include 'orb', 'sift', 'ecc', 'sparseOptFlow', 'none'.
             downscale (int): Downscale factor for processing frames.
-
-        Examples:
-            Initialize a GMC object with the 'sparseOptFlow' method and a downscale factor of 2
-            >>> gmc = GMC(method="sparseOptFlow", downscale=2)
         """
         super().__init__()
 
@@ -91,21 +79,20 @@ class GMC:
 
     def apply(self, raw_frame: np.array, detections: list = None) -> np.array:
         """
-        Apply object detection on a raw frame using the specified method.
+        Apply object detection on a raw frame using specified method.
 
         Args:
-            raw_frame (np.ndarray): The raw frame to be processed, with shape (H, W, C).
-            detections (List | None): List of detections to be used in the processing.
+            raw_frame (np.ndarray): The raw frame to be processed.
+            detections (list): List of detections to be used in the processing.
 
         Returns:
-            (np.ndarray): Processed frame with applied object detection.
+            (np.ndarray): Processed frame.
 
         Examples:
-            >>> gmc = GMC(method="sparseOptFlow")
-            >>> raw_frame = np.random.rand(480, 640, 3)
-            >>> processed_frame = gmc.apply(raw_frame)
-            >>> print(processed_frame.shape)
-            (480, 640, 3)
+            >>> gmc = GMC()
+            >>> gmc.apply(np.array([[1, 2, 3], [4, 5, 6]]))
+            array([[1, 2, 3],
+                   [4, 5, 6]])
         """
         if self.method in {"orb", "sift"}:
             return self.applyFeatures(raw_frame, detections)
@@ -118,20 +105,19 @@ class GMC:
 
     def applyEcc(self, raw_frame: np.array) -> np.array:
         """
-        Apply the ECC (Enhanced Correlation Coefficient) algorithm to a raw frame for motion compensation.
+        Apply ECC algorithm to a raw frame.
 
         Args:
-            raw_frame (np.ndarray): The raw frame to be processed, with shape (H, W, C).
+            raw_frame (np.ndarray): The raw frame to be processed.
 
         Returns:
-            (np.ndarray): The processed frame with the applied ECC transformation.
+            (np.ndarray): Processed frame.
 
         Examples:
-            >>> gmc = GMC(method="ecc")
-            >>> processed_frame = gmc.applyEcc(np.array([[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]]))
-            >>> print(processed_frame)
-            [[1. 0. 0.]
-             [0. 1. 0.]]
+            >>> gmc = GMC()
+            >>> gmc.applyEcc(np.array([[1, 2, 3], [4, 5, 6]]))
+            array([[1, 2, 3],
+                   [4, 5, 6]])
         """
         height, width, _ = raw_frame.shape
         frame = cv2.cvtColor(raw_frame, cv2.COLOR_BGR2GRAY)
@@ -141,6 +127,8 @@ class GMC:
         if self.downscale > 1.0:
             frame = cv2.GaussianBlur(frame, (3, 3), 1.5)
             frame = cv2.resize(frame, (width // self.downscale, height // self.downscale))
+            width = width // self.downscale
+            height = height // self.downscale
 
         # Handle first frame
         if not self.initializedFirstFrame:
@@ -166,18 +154,17 @@ class GMC:
         Apply feature-based methods like ORB or SIFT to a raw frame.
 
         Args:
-            raw_frame (np.ndarray): The raw frame to be processed, with shape (H, W, C).
-            detections (List | None): List of detections to be used in the processing.
+            raw_frame (np.ndarray): The raw frame to be processed.
+            detections (list): List of detections to be used in the processing.
 
         Returns:
             (np.ndarray): Processed frame.
 
         Examples:
-            >>> gmc = GMC(method="orb")
-            >>> raw_frame = np.random.randint(0, 255, (480, 640, 3), dtype=np.uint8)
-            >>> processed_frame = gmc.applyFeatures(raw_frame)
-            >>> print(processed_frame.shape)
-            (2, 3)
+            >>> gmc = GMC()
+            >>> gmc.applyFeatures(np.array([[1, 2, 3], [4, 5, 6]]))
+            array([[1, 2, 3],
+                   [4, 5, 6]])
         """
         height, width, _ = raw_frame.shape
         frame = cv2.cvtColor(raw_frame, cv2.COLOR_BGR2GRAY)
@@ -309,17 +296,16 @@ class GMC:
         Apply Sparse Optical Flow method to a raw frame.
 
         Args:
-            raw_frame (np.ndarray): The raw frame to be processed, with shape (H, W, C).
+            raw_frame (np.ndarray): The raw frame to be processed.
 
         Returns:
-            (np.ndarray): Processed frame with shape (2, 3).
+            (np.ndarray): Processed frame.
 
         Examples:
             >>> gmc = GMC()
-            >>> result = gmc.applySparseOptFlow(np.array([[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]]))
-            >>> print(result)
-            [[1. 0. 0.]
-             [0. 1. 0.]]
+            >>> gmc.applySparseOptFlow(np.array([[1, 2, 3], [4, 5, 6]]))
+            array([[1, 2, 3],
+                   [4, 5, 6]])
         """
         height, width, _ = raw_frame.shape
         frame = cv2.cvtColor(raw_frame, cv2.COLOR_BGR2GRAY)
@@ -370,7 +356,7 @@ class GMC:
         return H
 
     def reset_params(self) -> None:
-        """Reset the internal parameters including previous frame, keypoints, and descriptors."""
+        """Reset parameters."""
         self.prevFrame = None
         self.prevKeyPoints = None
         self.prevDescriptors = None

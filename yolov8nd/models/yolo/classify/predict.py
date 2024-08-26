@@ -18,10 +18,10 @@ class ClassificationPredictor(BasePredictor):
 
     Example:
         ```python
-        from ultralytics.utils import ASSETS
-        from ultralytics.models.yolo.classify import ClassificationPredictor
+        from yolov8nd.utils import ASSETS
+        from yolov8nd.models.yolo.classify import ClassificationPredictor
 
-        args = dict(model="yolov8n-cls.pt", source=ASSETS)
+        args = dict(model='yolov8n-cls.pt', source=ASSETS)
         predictor = ClassificationPredictor(overrides=args)
         predictor.predict_cli()
         ```
@@ -54,6 +54,8 @@ class ClassificationPredictor(BasePredictor):
             orig_imgs = ops.convert_torch2numpy_batch(orig_imgs)
 
         results = []
-        for pred, orig_img, img_path in zip(preds, orig_imgs, self.batch[0]):
+        for i, pred in enumerate(preds):
+            orig_img = orig_imgs[i]
+            img_path = self.batch[0][i]
             results.append(Results(orig_img, path=img_path, names=self.model.names, probs=pred))
         return results

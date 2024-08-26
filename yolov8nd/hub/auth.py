@@ -27,14 +27,10 @@ class Auth:
 
     def __init__(self, api_key="", verbose=False):
         """
-        Initialize Auth class and authenticate user.
-
-        Handles API key validation, Google Colab authentication, and new key requests. Updates SETTINGS upon successful
-        authentication.
+        Initialize the Auth class with an optional API key.
 
         Args:
-            api_key (str): API key or combined key_id format.
-            verbose (bool): Enable verbose logging.
+            api_key (str, optional): May be an API key or a combination API key and model ID, i.e. key_id
         """
         # Split the input API key in case it contains a combined key_model and keep only the API key part
         api_key = api_key.split("_")[0]

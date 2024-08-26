@@ -55,6 +55,9 @@ from yolov8nd.nn.modules import (
     Segment,
     WorldDetect,
     v10Detect,
+    NDetect,
+    NDetectL,
+    NDetectAux,
 )
 from yolov8nd.utils import DEFAULT_CFG_DICT, DEFAULT_CFG_KEYS, LOGGER, colorstr, emojis, yaml_load
 from yolov8nd.utils.checks import check_requirements, check_suffix, check_yaml
@@ -65,14 +68,15 @@ from yolov8nd.utils.loss import (
     v8OBBLoss,
     v8PoseLoss,
     v8SegmentationLoss,
+    v8DetectionLossAux,
 )
-from yolov8nd.utils.ops import make_divisible
 from yolov8nd.utils.plotting import feature_visualization
 from yolov8nd.utils.torch_utils import (
     fuse_conv_and_bn,
     fuse_deconv_and_bn,
     initialize_weights,
     intersect_dicts,
+    make_divisible,
     model_info,
     scale_img,
     time_sync,
@@ -89,17 +93,13 @@ class BaseModel(nn.Module):
 
     def forward(self, x, *args, **kwargs):
         """
-        Perform forward pass of the model for either training or inference.
-
-        If x is a dict, calculates and returns the loss for training. Otherwise, returns predictions for inference.
+        Forward pass of the model on a single scale. Wrapper for `_forward_once` method.
 
         Args:
-            x (torch.Tensor | dict): Input tensor for inference, or dict with image tensor and labels for training.
-            *args (Any): Variable length argument list.
-            **kwargs (Any): Arbitrary keyword arguments.
+            x (torch.Tensor | dict): The input image tensor or a dict including image tensor and gt labels.
 
         Returns:
-            (torch.Tensor): Loss if x is a dict (training), or network predictions (inference).
+            (torch.Tensor): The output of the network.
         """
         if isinstance(x, dict):  # for cases of training and validating while training.
             return self.loss(x, *args, **kwargs)
@@ -211,6 +211,9 @@ class BaseModel(nn.Module):
                 if isinstance(m, RepVGGDW):
                     m.fuse()
                     m.forward = m.forward_fuse
+                if isinstance(m, NDetectAux):
+                    m.forward = m.forward_fuse
+                    m.del_attr()
             self.info(verbose=verbose)
 
         return self
@@ -251,7 +254,7 @@ class BaseModel(nn.Module):
         """
         self = super()._apply(fn)
         m = self.model[-1]  # Detect()
-        if isinstance(m, Detect):  # includes all Detect subclasses like Segment, Pose, OBB, WorldDetect
+        if isinstance(m, (Detect, NDetect, NDetectL, NDetectAux)):  # includes all Detect subclasses like Segment, Pose, OBB, WorldDetect
             m.stride = fn(m.stride)
             m.anchors = fn(m.anchors)
             m.strides = fn(m.strides)
@@ -294,7 +297,7 @@ class BaseModel(nn.Module):
 class DetectionModel(BaseModel):
     """YOLOv8 detection model."""
 
-    def __init__(self, cfg="yolov8n.yaml", ch=3, nc=None, verbose=True):  # model, input channels, number of classes
+    def __init__(self, cfg="yolov8ndn.yaml", ch=3, nc=None, verbose=True):  # model, input channels, number of classes
         """Initialize the YOLOv8 detection model with the given config and parameters."""
         super().__init__()
         self.yaml = cfg if isinstance(cfg, dict) else yaml_model_load(cfg)  # cfg dict
@@ -317,7 +320,7 @@ class DetectionModel(BaseModel):
 
         # Build strides
         m = self.model[-1]  # Detect()
-        if isinstance(m, Detect):  # includes all Detect subclasses like Segment, Pose, OBB, WorldDetect
+        if isinstance(m, (Detect, NDetect, NDetectL, NDetectAux)):  # includes all Detect subclasses like Segment, Pose, OBB, WorldDetect
             s = 256  # 2x min stride
             m.inplace = self.inplace
 
@@ -332,6 +335,9 @@ class DetectionModel(BaseModel):
             m.bias_init()  # only run once
         else:
             self.stride = torch.Tensor([32])  # default stride for i.e. RTDETR
+
+        if isinstance(m, NDetectAux):
+            self.init_criterion = self.init_criterion_aux
 
         # Init weights, biases
         initialize_weights(self)
@@ -384,6 +390,16 @@ class DetectionModel(BaseModel):
     def init_criterion(self):
         """Initialize the loss criterion for the DetectionModel."""
         return E2EDetectLoss(self) if getattr(self, "end2end", False) else v8DetectionLoss(self)
+    
+    def init_criterion_aux(self):
+        return v8DetectionLossAux(self)
+    
+    def fuse(self, verbose=True):
+        super().fuse(verbose)
+        if isinstance(self.model[-1], NDetectAux):
+            self.criterion = v8DetectionLoss(self)
+        
+        return self
 
 
 class OBBModel(DetectionModel):
@@ -717,7 +733,7 @@ def temporary_modules(modules=None, attributes=None):
 
     Example:
         ```python
-        with temporary_modules({"old.module": "new.module"}, {"old.module.attribute": "new.module.attribute"}):
+        with temporary_modules({'old.module': 'new.module'}, {'old.module.attribute': 'new.module.attribute'}):
             import old.module  # this will now import new.module
             from old.module import attribute  # this will now import new.module.attribute
         ```
@@ -727,6 +743,7 @@ def temporary_modules(modules=None, attributes=None):
         Be aware that directly manipulating `sys.modules` can lead to unpredictable results, especially in larger
         applications or libraries. Use this function with caution.
     """
+
     if modules is None:
         modules = {}
     if attributes is None:
@@ -755,9 +772,9 @@ def temporary_modules(modules=None, attributes=None):
 
 def torch_safe_load(weight):
     """
-    Attempts to load a PyTorch model with the torch.load() function. If a ModuleNotFoundError is raised, it catches the
-    error, logs a warning message, and attempts to install the missing module via the check_requirements() function.
-    After installation, the function again attempts to load the model using torch.load().
+    This function attempts to load a PyTorch model with the torch.load() function. If a ModuleNotFoundError is raised,
+    it catches the error, logs a warning message, and attempts to install the missing module via the
+    check_requirements() function. After installation, the function again attempts to load the model using torch.load().
 
     Args:
         weight (str): The file path of the PyTorch model.
@@ -768,17 +785,30 @@ def torch_safe_load(weight):
     from yolov8nd.utils.downloads import attempt_download_asset
 
     check_suffix(file=weight, suffix=".pt")
+
+    file = None
+    if str(weight).find("amp-test") + 1:
+        file = attempt_download_asset(weight, "az0422/yolo-assets", "amp-test")
+    elif str(weight).find("yolov8nd") + 1:
+        if str(weight).find("-lite") + 1:
+            file = attempt_download_asset(weight, "az0422/yolo-assets", "v1.0-nd-lite")
+        if str(weight).find("-aux") + 1:
+            file = attempt_download_asset(weight, "az0422/yolo-assets", "v1.0-nd-aux")
+        else:
+            file = attempt_download_asset(weight, "az0422/yolo-assets", "v1.0-nd")
+    else:
+        file = attempt_download_asset(weight)  # search online if missing locally
     file = attempt_download_asset(weight)  # search online if missing locally
     try:
         with temporary_modules(
             modules={
-                "ultralytics.yolo.utils": "ultralytics.utils",
-                "ultralytics.yolo.v8": "ultralytics.models.yolo",
-                "ultralytics.yolo.data": "ultralytics.data",
+                "yolov8nd.yolo.utils": "yolov8nd.utils",
+                "yolov8nd.yolo.v8": "yolov8nd.models.yolo",
+                "yolov8nd.yolo.data": "yolov8nd.data",
             },
             attributes={
-                "ultralytics.nn.modules.block.Silence": "torch.nn.Identity",  # YOLOv9e
-                "ultralytics.nn.tasks.YOLOv10DetectionModel": "ultralytics.nn.tasks.DetectionModel",  # YOLOv10
+                "yolov8nd.nn.modules.block.Silence": "torch.nn.Identity",  # YOLOv9e
+                "yolov8nd.nn.tasks.YOLOv10DetectionModel": "yolov8nd.nn.tasks.DetectionModel",  # YOLOv10
             },
         ):
             ckpt = torch.load(file, map_location="cpu")
@@ -816,6 +846,7 @@ def torch_safe_load(weight):
 
 def attempt_load_weights(weights, device=None, inplace=True, fuse=False):
     """Loads an ensemble of models weights=[a,b,c] or a single model weights=[a] or weights=a."""
+
     ensemble = Ensemble()
     for w in weights if isinstance(weights, list) else [weights]:
         ckpt, w = torch_safe_load(w)  # load ckpt
@@ -969,7 +1000,7 @@ def parse_model(d, ch, verbose=True):  # model_dict, input_channels(3)
             args = [ch[f]]
         elif m is Concat:
             c2 = sum(ch[x] for x in f)
-        elif m in {Detect, WorldDetect, Segment, Pose, OBB, ImagePoolingAttn, v10Detect}:
+        elif m in {Detect, NDetect, NDetectL, NDetectAux, WorldDetect, Segment, Pose, OBB, ImagePoolingAttn, v10Detect}:
             args.append([ch[x] for x in f])
             if m is Segment:
                 args[2] = make_divisible(min(args[2], max_channels) * width, 8)
@@ -1008,7 +1039,7 @@ def yaml_model_load(path):
         LOGGER.warning(f"WARNING ⚠️ Ultralytics YOLO P6 models now use -p6 suffix. Renaming {path.stem} to {new_stem}.")
         path = path.with_name(new_stem + path.suffix)
 
-    unified_path = re.sub(r"(\d+)([nslmx])(.+)?$", r"\1\3", str(path))  # i.e. yolov8x.yaml -> yolov8.yaml
+    unified_path = re.sub(r"(\d+)(nd)?([nslmx])(.+)?$", r"\1\2\4", str(path))  # i.e. yolov8x.yaml -> yolov8.yaml
     yaml_file = check_yaml(unified_path, hard=False) or check_yaml(path)
     d = yaml_load(yaml_file)  # model dict
     d["scale"] = guess_model_scale(path)
@@ -1031,7 +1062,7 @@ def guess_model_scale(model_path):
     with contextlib.suppress(AttributeError):
         import re
 
-        return re.search(r"yolov\d+([nslmx])", Path(model_path).stem).group(1)  # n, s, m, l, or x
+        return re.search(r"yolov\d+(nd)?([nslmx])", Path(model_path).stem).group(2)  # n, s, m, l, or x
     return ""
 
 
@@ -1086,7 +1117,7 @@ def guess_model_task(model):
                 return "pose"
             elif isinstance(m, OBB):
                 return "obb"
-            elif isinstance(m, (Detect, WorldDetect, v10Detect)):
+            elif isinstance(m, (Detect, NDetect, NDetectL, NDetectAux, WorldDetect, v10Detect)):
                 return "detect"
 
     # Guess from model filename

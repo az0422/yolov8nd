@@ -21,15 +21,10 @@ def on_predict_start(predictor: object, persist: bool = False) -> None:
 
     Args:
         predictor (object): The predictor object to initialize trackers for.
-        persist (bool): Whether to persist the trackers if they already exist.
+        persist (bool, optional): Whether to persist the trackers if they already exist. Defaults to False.
 
     Raises:
         AssertionError: If the tracker_type is not 'bytetrack' or 'botsort'.
-
-    Examples:
-        Initialize trackers for a predictor object:
-        >>> predictor = SomePredictorClass()
-        >>> on_predict_start(predictor, persist=True)
     """
     if hasattr(predictor, "trackers") and persist:
         return
@@ -56,12 +51,7 @@ def on_predict_postprocess_end(predictor: object, persist: bool = False) -> None
 
     Args:
         predictor (object): The predictor object containing the predictions.
-        persist (bool): Whether to persist the trackers if they already exist.
-
-    Examples:
-        Postprocess predictions and update with tracking
-        >>> predictor = YourPredictorClass()
-        >>> on_predict_postprocess_end(predictor, persist=True)
+        persist (bool, optional): Whether to persist the trackers if they already exist. Defaults to False.
     """
     path, im0s = predictor.batch[:2]
 
@@ -94,11 +84,6 @@ def register_tracker(model: object, persist: bool) -> None:
     Args:
         model (object): The model object to register tracking callbacks for.
         persist (bool): Whether to persist the trackers if they already exist.
-
-    Examples:
-        Register tracking callbacks to a YOLO model
-        >>> model = YOLOModel()
-        >>> register_tracker(model, persist=True)
     """
     model.add_callback("on_predict_start", partial(on_predict_start, persist=persist))
     model.add_callback("on_predict_postprocess_end", partial(on_predict_postprocess_end, persist=persist))

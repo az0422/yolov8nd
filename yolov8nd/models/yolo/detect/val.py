@@ -20,9 +20,9 @@ class DetectionValidator(BaseValidator):
 
     Example:
         ```python
-        from ultralytics.models.yolo.detect import DetectionValidator
+        from yolov8nd.models.yolo.detect import DetectionValidator
 
-        args = dict(model="yolov8n.pt", data="coco8.yaml")
+        args = dict(model='yolov8n.pt', data='coco8.yaml')
         validator = DetectionValidator(args=args)
         validator()
         ```
@@ -97,7 +97,7 @@ class DetectionValidator(BaseValidator):
             self.args.iou,
             labels=self.lb,
             multi_label=True,
-            agnostic=self.args.single_cls or self.args.agnostic_nms,
+            agnostic=self.args.single_cls,
             max_det=self.args.max_det,
         )
 

@@ -14,9 +14,9 @@ class PoseTrainer(yolo.detect.DetectionTrainer):
 
     Example:
         ```python
-        from ultralytics.models.yolo.pose import PoseTrainer
+        from yolov8nd.models.yolo.pose import PoseTrainer
 
-        args = dict(model="yolov8n-pose.pt", data="coco8-pose.yaml", epochs=3)
+        args = dict(model='yolov8n-pose.pt', data='coco8-pose.yaml', epochs=3)
         trainer = PoseTrainer(overrides=args)
         trainer.train()
         ```

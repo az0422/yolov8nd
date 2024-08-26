@@ -18,9 +18,9 @@ class ClassificationValidator(BaseValidator):
 
     Example:
         ```python
-        from ultralytics.models.yolo.classify import ClassificationValidator
+        from yolov8nd.models.yolo.classify import ClassificationValidator
 
-        args = dict(model="yolov8n-cls.pt", data="imagenet10")
+        args = dict(model='yolov8n-cls.pt', data='imagenet10')
         validator = ClassificationValidator(args=args)
         validator()
         ```
