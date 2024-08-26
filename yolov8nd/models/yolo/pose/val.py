@@ -18,9 +18,9 @@ class PoseValidator(DetectionValidator):
 
     Example:
         ```python
-        from yolov8nd.models.yolo.pose import PoseValidator
+        from ultralytics.models.yolo.pose import PoseValidator
 
-        args = dict(model='yolov8n-pose.pt', data='coco8-pose.yaml')
+        args = dict(model="yolov8n-pose.pt", data="coco8-pose.yaml")
         validator = PoseValidator(args=args)
         validator()
         ```

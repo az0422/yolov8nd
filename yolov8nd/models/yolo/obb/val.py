@@ -16,11 +16,11 @@ class OBBValidator(DetectionValidator):
 
     Example:
         ```python
-        from yolov8nd.models.yolo.obb import OBBValidator
+        from ultralytics.models.yolo.obb import OBBValidator
 
-        args = dict(model='yolov8n-obb.pt', data='dota8.yaml')
+        args = dict(model="yolov8n-obb.pt", data="dota8.yaml")
         validator = OBBValidator(args=args)
-        validator(model=args['model'])
+        validator(model=args["model"])
         ```
     """
 

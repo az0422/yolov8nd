@@ -31,7 +31,7 @@ download: |
   import os
   from pathlib import Path
 
-  from yolov8nd.utils.downloads import download
+  from ultralytics.utils.downloads import download
 
   def visdrone2yolo(dir):
       from PIL import Image

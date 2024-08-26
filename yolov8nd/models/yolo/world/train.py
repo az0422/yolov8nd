@@ -27,9 +27,9 @@ class WorldTrainer(yolo.detect.DetectionTrainer):
 
     Example:
         ```python
-        from yolov8nd.models.yolo.world import WorldModel
+        from ultralytics.models.yolo.world import WorldModel
 
-        args = dict(model='yolov8s-world.pt', data='coco8.yaml', epochs=3)
+        args = dict(model="yolov8s-world.pt", data="coco8.yaml", epochs=3)
         trainer = WorldTrainer(overrides=args)
         trainer.train()
         ```

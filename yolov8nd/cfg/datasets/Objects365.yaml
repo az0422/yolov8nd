@@ -385,9 +385,9 @@ names:
 download: |
   from tqdm import tqdm
 
-  from yolov8nd.utils.checks import check_requirements
-  from yolov8nd.utils.downloads import download
-  from yolov8nd.utils.ops import xyxy2xywhn
+  from ultralytics.utils.checks import check_requirements
+  from ultralytics.utils.downloads import download
+  from ultralytics.utils.ops import xyxy2xywhn
 
   import numpy as np
   from pathlib import Path
