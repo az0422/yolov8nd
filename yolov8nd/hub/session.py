@@ -25,7 +25,7 @@ class HUBTrainingSession:
         rate_limits (dict): Rate limits for different API calls (in seconds).
         timers (dict): Timers for rate limiting.
         metrics_queue (dict): Queue for the model's metrics.
-        model (dict): Model data fetched from Ultralytics HUB.
+        model (dict): Model data fetched from yolov8nd HUB.
     """
 
     def __init__(self, identifier):
@@ -87,7 +87,7 @@ class HUBTrainingSession:
             return None
 
     def load_model(self, model_id):
-        """Loads an existing model from Ultralytics HUB using the provided model identifier."""
+        """Loads an existing model from yolov8nd HUB using the provided model identifier."""
         self.model = self.client.model(model_id)
         if not self.model.data:  # then model does not exist
             raise ValueError(emojis("❌ The specified HUB model does not exist"))  # TODO: improve error handling

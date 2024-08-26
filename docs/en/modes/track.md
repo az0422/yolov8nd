@@ -12,7 +12,7 @@ Object tracking in the realm of video analytics is a critical task that not only
 
 ## Why Choose Ultralytics YOLO for Object Tracking?
 
-The output from Ultralytics trackers is consistent with standard object detection but has the added value of object IDs. This makes it easy to track objects in video streams and perform subsequent analytics. Here's why you should consider using Ultralytics YOLO for your object tracking needs:
+The output from yolov8nd trackers is consistent with standard object detection but has the added value of object IDs. This makes it easy to track objects in video streams and perform subsequent analytics. Here's why you should consider using Ultralytics YOLO for your object tracking needs:
 
 - **Efficiency:** Process video streams in real-time without compromising accuracy.
 - **Flexibility:** Supports multiple tracking algorithms and configurations.

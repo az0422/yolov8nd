@@ -234,7 +234,7 @@ def convert_coco(
 
     Example:
         ```python
-        from ultralytics.data.converter import convert_coco
+        from yolov8nd.data.converter import convert_coco
 
         convert_coco("../datasets/coco/annotations/", use_segments=True, use_keypoints=False, cls91to80=True)
         convert_coco("../datasets/lvis/annotations/", use_segments=True, use_keypoints=False, cls91to80=False, lvis=True)
@@ -347,7 +347,7 @@ def convert_segment_masks_to_yolo_seg(masks_dir, output_dir, classes):
 
     Example:
         ```python
-        from ultralytics.data.converter import convert_segment_masks_to_yolo_seg
+        from yolov8nd.data.converter import convert_segment_masks_to_yolo_seg
 
         # The classes here is the total classes in the dataset, for COCO dataset we have 80 classes
         convert_segment_masks_to_yolo_seg("path/to/masks_directory", "path/to/output/directory", classes=80)
@@ -426,7 +426,7 @@ def convert_dota_to_yolo_obb(dota_root_path: str):
 
     Example:
         ```python
-        from ultralytics.data.converter import convert_dota_to_yolo_obb
+        from yolov8nd.data.converter import convert_dota_to_yolo_obb
 
         convert_dota_to_yolo_obb("path/to/DOTA")
         ```

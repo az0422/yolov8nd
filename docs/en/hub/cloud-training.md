@@ -58,7 +58,7 @@ When the training starts, you can click **Done** and monitor the training progre
 
 ## Monitor Your Training
 
-Once the model and mode of training have been selected, you can monitor the training procedure on the `Train` section with the link provided in the terminal (on your agent/Google Colab) or a button from Ultralytics Cloud.
+Once the model and mode of training have been selected, you can monitor the training procedure on the `Train` section with the link provided in the terminal (on your agent/Google Colab) or a button from yolov8nd Cloud.
 
 ![Monitor your Training](https://github.com/ultralytics/ultralytics/assets/19519529/316f8301-0d60-465e-8c99-aa3daf66433c)
 

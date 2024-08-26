@@ -20,7 +20,7 @@ class Profile(contextlib.ContextDecorator):
 
     Example:
         ```python
-        from ultralytics.utils.ops import Profile
+        from yolov8nd.utils.ops import Profile
 
         with Profile(device=device) as dt:
             pass  # slow operation here

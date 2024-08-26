@@ -18,8 +18,8 @@ class ClassificationPredictor(BasePredictor):
 
     Example:
         ```python
-        from ultralytics.utils import ASSETS
-        from ultralytics.models.yolo.classify import ClassificationPredictor
+        from yolov8nd.utils import ASSETS
+        from yolov8nd.models.yolo.classify import ClassificationPredictor
 
         args = dict(model="yolov8n-cls.pt", source=ASSETS)
         predictor = ClassificationPredictor(overrides=args)

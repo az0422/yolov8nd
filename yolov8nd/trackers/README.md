@@ -6,7 +6,7 @@ Object tracking in the realm of video analytics is a critical task that not only
 
 ## Why Choose Ultralytics YOLO for Object Tracking?
 
-The output from Ultralytics trackers is consistent with standard object detection but has the added value of object IDs. This makes it easy to track objects in video streams and perform subsequent analytics. Here's why you should consider using Ultralytics YOLO for your object tracking needs:
+The output from yolov8nd trackers is consistent with standard object detection but has the added value of object IDs. This makes it easy to track objects in video streams and perform subsequent analytics. Here's why you should consider using Ultralytics YOLO for your object tracking needs:
 
 - **Efficiency:** Process video streams in real-time without compromising accuracy.
 - **Flexibility:** Supports multiple tracking algorithms and configurations.
@@ -39,7 +39,7 @@ To run the tracker on video streams, use a trained Detect, Segment or Pose model
 #### Python
 
 ```python
-from ultralytics import YOLO
+from yolov8nd import YOLO
 
 # Load an official or custom model
 model = YOLO("yolov8n.pt")  # Load an official Detect model
@@ -78,7 +78,7 @@ Tracking configuration shares properties with Predict mode, such as `conf`, `iou
 #### Python
 
 ```python
-from ultralytics import YOLO
+from yolov8nd import YOLO
 
 # Configure the tracking parameters and run the tracker
 model = YOLO("yolov8n.pt")
@@ -99,7 +99,7 @@ Ultralytics also allows you to use a modified tracker configuration file. To do 
 #### Python
 
 ```python
-from ultralytics import YOLO
+from yolov8nd import YOLO
 
 # Load the model and run the tracker with a custom configuration file
 model = YOLO("yolov8n.pt")
@@ -126,7 +126,7 @@ Here is a Python script using OpenCV (`cv2`) and YOLOv8 to run object tracking o
 ```python
 import cv2
 
-from ultralytics import YOLO
+from yolov8nd import YOLO
 
 # Load the YOLOv8 model
 model = YOLO("yolov8n.pt")
@@ -178,7 +178,7 @@ from collections import defaultdict
 import cv2
 import numpy as np
 
-from ultralytics import YOLO
+from yolov8nd import YOLO
 
 # Load the YOLOv8 model
 model = YOLO("yolov8n.pt")
@@ -260,7 +260,7 @@ import threading
 
 import cv2
 
-from ultralytics import YOLO
+from yolov8nd import YOLO
 
 
 def run_tracker_in_thread(filename, model):

@@ -1,6 +1,6 @@
 ---
 comments: true
-description: Explore the cutting-edge Segment Anything Model (SAM) from Ultralytics that allows real-time image segmentation. Learn about its promptable segmentation, zero-shot performance, and how to use it.
+description: Explore the cutting-edge Segment Anything Model (SAM) from yolov8nd that allows real-time image segmentation. Learn about its promptable segmentation, zero-shot performance, and how to use it.
 keywords: Ultralytics, image segmentation, Segment Anything Model, SAM, SA-1B dataset, real-time performance, zero-shot transfer, object detection, image analysis, machine learning
 ---
 

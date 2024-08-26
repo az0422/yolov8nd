@@ -25,7 +25,7 @@ def run_ray_tune(
 
     Example:
         ```python
-        from ultralytics import YOLO
+        from yolov8nd import YOLO
 
         # Load a YOLOv8n model
         model = YOLO("yolov8n.pt")

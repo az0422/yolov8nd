@@ -2,8 +2,8 @@
 # Builds GitHub actions CI runner image for deployment to DockerHub https://hub.docker.com/r/ultralytics/ultralytics
 # Image is CUDA-optimized for YOLOv8 single/multi-GPU training and inference tests
 
-# Start FROM Ultralytics GPU image
-FROM ultralytics/ultralytics:latest
+# Start from yolov8nd GPU image
+from yolov8nd/ultralytics:latest
 
 # Set the working directory
 WORKDIR /actions-runner

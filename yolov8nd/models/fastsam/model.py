@@ -14,7 +14,7 @@ class FastSAM(Model):
 
     Example:
         ```python
-        from ultralytics import FastSAM
+        from yolov8nd import FastSAM
 
         model = FastSAM("last.pt")
         results = model.predict("ultralytics/assets/bus.jpg")

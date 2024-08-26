@@ -22,7 +22,7 @@ Requirements:
     $ pip install "ultralytics[export]"
 
 Python:
-    from ultralytics import YOLO
+    from yolov8nd import YOLO
     model = YOLO('yolov8n.pt')
     results = model.export(format='onnx')
 

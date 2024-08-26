@@ -174,7 +174,7 @@ class Compose:
             transforms (List[Callable]): A list of callable transform objects to be applied sequentially.
 
         Examples:
-            >>> from ultralytics.data.augment import Compose, RandomHSV, RandomFlip
+            >>> from yolov8nd.data.augment import Compose, RandomHSV, RandomFlip
             >>> transforms = [RandomHSV(), RandomFlip()]
             >>> compose = Compose(transforms)
         """
@@ -510,7 +510,7 @@ class Mosaic(BaseMixTransform):
         _cat_labels: Concatenates labels and clips mosaic border instances.
 
     Examples:
-        >>> from ultralytics.data.augment import Mosaic
+        >>> from yolov8nd.data.augment import Mosaic
         >>> dataset = YourDataset(...)  # Your image dataset
         >>> mosaic_aug = Mosaic(dataset, imgsz=640, p=0.5, n=4)
         >>> augmented_labels = mosaic_aug(original_labels)
@@ -530,7 +530,7 @@ class Mosaic(BaseMixTransform):
             n (int): The grid size, either 4 (for 2x2) or 9 (for 3x3).
 
         Examples:
-            >>> from ultralytics.data.augment import Mosaic
+            >>> from yolov8nd.data.augment import Mosaic
             >>> dataset = YourDataset(...)
             >>> mosaic_aug = Mosaic(dataset, imgsz=640, p=0.5, n=4)
         """
@@ -880,7 +880,7 @@ class MixUp(BaseMixTransform):
         _mix_transform: Applies MixUp augmentation to the input labels.
 
     Examples:
-        >>> from ultralytics.data.augment import MixUp
+        >>> from yolov8nd.data.augment import MixUp
         >>> dataset = YourDataset(...)  # Your image dataset
         >>> mixup = MixUp(dataset, p=0.5)
         >>> augmented_labels = mixup(original_labels)
@@ -899,7 +899,7 @@ class MixUp(BaseMixTransform):
             p (float): Probability of applying MixUp augmentation to an image. Must be in the range [0, 1].
 
         Examples:
-            >>> from ultralytics.data.dataset import YOLODataset
+            >>> from yolov8nd.data.dataset import YOLODataset
             >>> dataset = YOLODataset("path/to/data.yaml")
             >>> mixup = MixUp(dataset, pre_transform=None, p=0.5)
         """
@@ -1314,7 +1314,7 @@ class RandomHSV:
 
     Examples:
         >>> import numpy as np
-        >>> from ultralytics.data.augment import RandomHSV
+        >>> from yolov8nd.data.augment import RandomHSV
         >>> augmenter = RandomHSV(hgain=0.5, sgain=0.5, vgain=0.5)
         >>> image = np.random.randint(0, 255, (100, 100, 3), dtype=np.uint8)
         >>> labels = {"img": image}
@@ -2274,7 +2274,7 @@ def v8_transforms(dataset, imgsz, hyp, stretch=False):
         (Compose): A composition of image transformations to be applied to the dataset.
 
     Examples:
-        >>> from ultralytics.data.dataset import YOLODataset
+        >>> from yolov8nd.data.dataset import YOLODataset
         >>> dataset = YOLODataset(img_path="path/to/images", imgsz=640)
         >>> hyp = {"mosaic": 1.0, "copy_paste": 0.5, "degrees": 10.0, "translate": 0.2, "scale": 0.9}
         >>> transforms = v8_transforms(dataset, imgsz=640, hyp=hyp)

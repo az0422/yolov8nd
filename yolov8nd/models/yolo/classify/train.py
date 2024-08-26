@@ -20,7 +20,7 @@ class ClassificationTrainer(BaseTrainer):
 
     Example:
         ```python
-        from ultralytics.models.yolo.classify import ClassificationTrainer
+        from yolov8nd.models.yolo.classify import ClassificationTrainer
 
         args = dict(model="yolov8n-cls.pt", data="imagenet10", epochs=3)
         trainer = ClassificationTrainer(overrides=args)

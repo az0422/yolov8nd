@@ -73,7 +73,7 @@ def delete_dsstore(path, files_to_delete=(".DS_Store", "__MACOSX")):
 
     Example:
         ```python
-        from ultralytics.utils.downloads import delete_dsstore
+        from yolov8nd.utils.downloads import delete_dsstore
 
         delete_dsstore("path/to/dir")
         ```
@@ -105,7 +105,7 @@ def zip_directory(directory, compress=True, exclude=(".DS_Store", "__MACOSX"), p
 
     Example:
         ```python
-        from ultralytics.utils.downloads import zip_directory
+        from yolov8nd.utils.downloads import zip_directory
 
         file = zip_directory("path/to/dir")
         ```
@@ -151,7 +151,7 @@ def unzip_file(file, path=None, exclude=(".DS_Store", "__MACOSX"), exist_ok=Fals
 
     Example:
         ```python
-        from ultralytics.utils.downloads import unzip_file
+        from yolov8nd.utils.downloads import unzip_file
 
         dir = unzip_file("path/to/file.zip")
         ```
@@ -245,7 +245,7 @@ def get_google_drive_file_info(link):
 
     Example:
         ```python
-        from ultralytics.utils.downloads import get_google_drive_file_info
+        from yolov8nd.utils.downloads import get_google_drive_file_info
 
         link = "https://drive.google.com/file/d/1cqT-cJgANNrhIHCrEufUYhQ4RqiWG_lJ/view?usp=drive_link"
         url, filename = get_google_drive_file_info(link)
@@ -306,7 +306,7 @@ def safe_download(
 
     Example:
         ```python
-        from ultralytics.utils.downloads import safe_download
+        from yolov8nd.utils.downloads import safe_download
 
         link = "https://ultralytics.com/assets/bus.jpg"
         path = safe_download(link)

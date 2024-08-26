@@ -14,7 +14,7 @@ class SegmentationTrainer(yolo.detect.DetectionTrainer):
 
     Example:
         ```python
-        from ultralytics.models.yolo.segment import SegmentationTrainer
+        from yolov8nd.models.yolo.segment import SegmentationTrainer
 
         args = dict(model="yolov8n-seg.pt", data="coco8-seg.yaml", epochs=3)
         trainer = SegmentationTrainer(overrides=args)

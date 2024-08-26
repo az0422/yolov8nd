@@ -539,7 +539,7 @@ def strip_optimizer(f: Union[str, Path] = "best.pt", s: str = "") -> None:
     Example:
         ```python
         from pathlib import Path
-        from ultralytics.utils.torch_utils import strip_optimizer
+        from yolov8nd.utils.torch_utils import strip_optimizer
 
         for f in Path("path/to/model/checkpoints").rglob("*.pt"):
             strip_optimizer(f)
@@ -608,7 +608,7 @@ def profile(input, ops, n=10, device=None):
 
     Example:
         ```python
-        from ultralytics.utils.torch_utils import profile
+        from yolov8nd.utils.torch_utils import profile
 
         input = torch.randn(16, 3, 640, 640)
         m1 = lambda x: x * torch.sigmoid(x)

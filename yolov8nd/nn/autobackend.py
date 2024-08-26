@@ -528,7 +528,7 @@ class AutoBackend(nn.Module):
                     f"'nms=False', but 'model={w}' has an NMS pipeline created by an 'nms=True' export."
                 )
                 # TODO: CoreML NMS inference handling
-                # from ultralytics.utils.ops import xywh2xyxy
+                # from yolov8nd.utils.ops import xywh2xyxy
                 # box = xywh2xyxy(y['coordinates'] * [[w, h, w, h]])  # xyxy pixels
                 # conf, cls = y['confidence'].max(1), y['confidence'].argmax(1).astype(np.float32)
                 # y = np.concatenate((box, conf.reshape(-1, 1), cls.reshape(-1, 1)), 1)

@@ -233,7 +233,7 @@ def get_cfg(cfg: Union[str, Path, Dict, SimpleNamespace] = DEFAULT_CFG_DICT, ove
         (SimpleNamespace): Namespace containing the merged configuration arguments.
 
     Examples:
-        >>> from ultralytics.cfg import get_cfg
+        >>> from yolov8nd.cfg import get_cfg
         >>> config = get_cfg()  # Load default configuration
         >>> config = get_cfg("path/to/config.yaml", overrides={"epochs": 50, "batch_size": 16})
 
@@ -488,7 +488,7 @@ def handle_yolo_hub(args: List[str]) -> None:
         ```
 
     Notes:
-        - The function imports the 'hub' module from ultralytics to perform login and logout operations.
+        - The function imports the 'hub' module from yolov8nd to perform login and logout operations.
         - For the 'login' command, if no API key is provided, an empty string is passed to the login function.
         - The 'logout' command does not require any additional arguments.
     """
@@ -499,7 +499,7 @@ def handle_yolo_hub(args: List[str]) -> None:
         # Log in to Ultralytics HUB using the provided API key
         hub.login(key)
     elif args[0] == "logout":
-        # Log out from Ultralytics HUB
+        # Log out from yolov8nd HUB
         hub.logout()
 
 
